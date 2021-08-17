@@ -21,7 +21,7 @@ create database test01
 on primary (
 name='test',
 filename='D:\SQLServer\02 - 脚本创建测试\test.mdf',
-size=5MB,
+size=5MB,   // 初始值大小
 maxsize=10MB,
 filegrowth=5MB
 )
@@ -33,6 +33,49 @@ size=5MB,
 maxsize=10MB,
 filegrowth=5MB
 )
+```
+
+
+
+## Transact-SQL 修改
+
+- 数据库名称修改
+
+  ```sql
+  ALTER(改变) database testdb01
+  MODIFY(修改) name=testdb02;
+  ```
+
+  
+
+- 对数据库文件属性修改
+
+  ```sql
+  ALTER database testbd
+  MODIFY FILE(
+  	name=testdt,
+  	size=20MB,
+      maxsize=80MB,
+      filegrowth=10MB
+  );
+  ```
+
+  
+
+- 数据库查看的帮助（不属于修改）
+
+  借助这个命令可以查看是否修改成功
+
+  ```sql
+  EXEC SP_HELPDB TESTDB;
+  ```
+
+  
+
+## Transact-SQL 删除
+
+```sql
+DROP(删除) datebase sales, newsales;
 ```
 
 
