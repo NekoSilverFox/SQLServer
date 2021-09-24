@@ -48,7 +48,7 @@ filegrowth=5MB
 
   
 
-- 对数据库文件属性修改
+- 对数据库**文件属性**修改
 
   ```sql
   ALTER database testbd
@@ -78,7 +78,37 @@ filegrowth=5MB
 DROP(删除) datebase sales, newsales;
 ```
 
+## 各种char的对比
 
+首先创建表 CharTest（下表）
+
+| char(10) | varchar(10) | nchar(10) | nvchar(10) |
+| -------- | ----------- | --------- | ---------- |
+| aa       | aa          | aa        | aa         |
+
+借助指令查看大小及长度
+
+```sql
+-- 这是一行注释，以“--”开头
+-- Len(参数) 可以查看字符串的字符数量
+-- DataLength() 计算指定参数的所占据的字节长度。英文1字节，中文2字节
+
+-- char 每个字符占1字节，当储存的字符数量小于指定的容量时，容量【不会】收缩；大于指定容量时会报错（截断二进制数据）
+select Len(char) from chatTest			-- 输出：2
+select DataLength(char) from charTest	-- 输出：10
+
+-- varchar 每个字符占1字节，“var”代表可变的，说明分配的容量是一个可以动态变化的空间。当存储的字符数小于分配的容量时，多余的容量会自动回收；大会指定的容量还是会报错
+select Len(varchar) from chatTest			-- 输出：2
+select DataLength(varchar) from charTest	-- 输出：2
+
+-- nchar 每个字符占【2】字节，因为其保存的是Unicode，其开头的n也代表了Unicode；容量不会自动收缩；大于会报错
+select Len(varchar) from chatTest			-- 输出：2
+select DataLength(varchar) from charTest	-- 输出：【20】
+
+-- 
+select Len(nvarchar) from chatTest			-- 输出：2
+select DataLength(nvarchar) from charTest	-- 输出：【4】收缩了，且一个字符2字节
+```
 
 
 
