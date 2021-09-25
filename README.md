@@ -12,9 +12,68 @@
 
 SQL语句可以用来执行各种各样的操作，例如更新数据库中的数据，从数据库中提取数据等。目前，绝大多数流行的关系型数据库管理系统，如 Oracle，Sybase，Microsoft SQL Server，Access 等都采用了 SQL 语言标准。虽然很多数据库都对SQL语句进行了再开发和扩展，但是包括 Select、Insert、Update、Delete、Create，以及 Drop 在内的标准的 SQL 命令仍然可以被用来完成几乎所有的数据库操作
 
+## SLQ 语句入门
+
+```sql
+-- 在 SQL 中没有双引号 `" "`，所有的字符都使用单引号 `' '` 包含
+print '1'						-- 输出：1
+select 1						-- 
+
+-- 任何类型的值都可以使用【单引号】包含
+-- 首先 `+` 是一个算数运算符，只有 `+` 两边都是字符串时 `+` 才是一个连接符
+-- 如果有一边是数值类型，那么系统就会做隐式类型转换，将可以转为数字的字符转数字，如果转不了就报错
+print '1' + '2'					-- 输出：12
+print 0 + '1' + '2'				-- 输出：3
+print '2' + 3					-- 输出：5
+print 'a' + 1					-- 报错，因为 `a` 转换不成字符（不会转为10，因为这里没有ASCII的概念）
+
+-- 不区分大小写
+print 'aaa'						-- 输出：aaa
+pRint 'aaa'						-- 输出：aaa
+Select * from Admin where name='a'-- 会把表中name为 a 和 A 的都一起输出
+
+-- 没有 `==`，赋值和逻辑相等都是使用 `=`
+if (1 = 1)
+	print 'yes!'				-- 输出：yes!
+```
+
+- SQL 主要分 DDL、DML、DCL
+  - DDL：数据定义语言，包括建表、建库等语句。
+    - Create Table、Drop Table、Alter Table
+  - DML：数据库操作语言。
+    - Select、Insert、Update、Delete
+  - DCL：数据库控制语言
+    - Grant 授权、Revoke 取消授权
+
+
+
 ## 数据库的创建
 
-使用脚本：
+创建模板：
+
+```SQL
+create database 数据库名称
+on primary					-- 在哪个文件组上创建。默认在主文件组上创建（创建为主数据文件）
+(
+-- 【逗号问题】什么时候末尾加逗号：当它不是一句可以单独执行的SQL命令 或 是一个结构中的某一句时
+    name='逻辑名称_data',	-- 逻辑名称一般会有一个后缀，数据文件是`data`、日志文件是`log`
+    size=初始大小,			-- 数值不应该包含在 '单引号' 之内
+    fileGrowth=增长方式,	-- 也不应该包含在 '单引号' 之内
+    maxsize=最大容量,
+    filename='全路径'		-- 最后一句不加逗号；扩展名：`.mdf`
+)
+
+log on
+(
+    name='逻辑名称_log',	-- 逻辑名称一般会有一个后缀，数据文件是`data`、日志文件是`log`
+    size=初始大小,			-- 数值不应该包含在 '单引号' 之内
+    fileGrowth=增长方式,	-- 也不应该包含在 '单引号' 之内
+    maxsize=最大容量,
+    filename='全路径'		-- 最后一句不加逗号；扩展名：`.ldf`
+)
+```
+
+
 
 ```sql
 create database test01
@@ -105,10 +164,12 @@ select DataLength(varchar) from charTest	-- 输出：2
 select Len(varchar) from chatTest			-- 输出：2
 select DataLength(varchar) from charTest	-- 输出：【20】
 
--- 
+-- nvarchar 
 select Len(nvarchar) from chatTest			-- 输出：2
 select DataLength(nvarchar) from charTest	-- 输出：【4】收缩了，且一个字符2字节
 ```
+
+
 
 
 
