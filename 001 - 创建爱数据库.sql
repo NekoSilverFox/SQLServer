@@ -62,7 +62,7 @@ go
 create table Teacher
 (
 	ID int identity(1,1) primary key,					--【设置标识列】identity(标识种子,标识增量)，标识列就是用来做主键的！
-	Name nvarchar(50) not null,								--【not null】标记字段不能为空，char类型没指定长度默认为 1 ！
+	Name nvarchar(50) not null,							--【not null】标记字段不能为空，char类型没指定长度默认为 1 ！
 	Gender bit not null,
 	Age smallint check(age>=0 and age<=100) not null,	--【check】设置check约束
 	Salary money,										-- 当一个字段可以为null时，可以写 null，也可以不写
