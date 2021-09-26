@@ -27,6 +27,14 @@ on primary
 	size=3mb,
 	filegrowth=1mb,
 	maxsize=100mb
+),														-- 如果同时创建多个数据库，括号后面加逗号、
+filegroup userDataBase									-- 【可选】选择文件组
+(
+	name='TestSchool2_data',
+	filename='D:\SQLServer\db001_TestSchool\TestSchool2_data.ndf',		-- 【.ndf】次数据文件
+	size=1mb,
+	filegrowth=1mb,
+	maxsize=10mb
 )
 log on
 (
@@ -35,4 +43,14 @@ log on
 	size=1mb,
 	filegrowth=1%
 	-- maxsize=100mb 日志一般不限制最大容量
+),														-- 日志文件也可以有多个
+(
+	name='TestSchool2_log',
+	filename='D:\SQLServer\db001_TestSchool\TestSchool_data2.log',
+	size=1mb,
+	filegrowth=1%
+	-- maxsize=100mb 日志一般不限制最大容量
 )
+
+-------------------------------------------------------------------------
+-- 创建数据表
