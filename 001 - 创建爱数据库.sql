@@ -61,7 +61,7 @@ if exists(select * from sysobjects where name='Teacher') -- 查询表要用 sysobject
 go
 create table Teacher
 (
-	ID int identity(1,1) primary key,					--【设置表示列】identity(标识种子,标识增量)
+	ID int identity(1,1) primary key,					--【设置标识列】identity(标识种子,标识增量)，标识列就是用来做主键的！
 	Name nvarchar not null,								--【not null】标记字段不能为空
 	Gender bit not null,
 	Age smallint check(age>=0 and age<=100) not null,	--【check】设置check约束
