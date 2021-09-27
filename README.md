@@ -262,13 +262,12 @@ on update set null 或者 default	-- 更新时外键表字段置为空或默认�
 -- 说明：标识列值不管什么时候都不能插入值，同时插入的值与要满足表的所有完整性约束
 ```
 
-
-
 代码示例及说明：
 
 ```sql
--- 1. 为表的字段插入值，如果不指定字段列表，那么就默认要为所有字段插入值
 use TestSchool
+
+-- 1. 为表的字段插入值，如果不指定字段列表，那么就默认要为所有字段插入值
 insert into Teacher values('Tom1', 1, 1, 20, 5000, '1999-8-9')
 
 -- 2. 值不能违反表的约束
@@ -292,6 +291,76 @@ insert into Teacher values(7, '3', '0', '77', '6777', '1999-8-9')
 -- 8. 如果日期值没有使用 '单引号' 包含，那么就会得到系统默认日期
 insert into Teacher values(8, '3', '0', '77', '6777', 1999-8-9)	-- Birthday 被设置成了系统默认值（1905-06-06）
 ```
+
+## 数据更新
+
+模板：
+
+```sql
+-- 数据更新
+-- 语法：
+-- update 表名 set 字段=值或表达式, 字段=值或表达式 where 条件(一般是能够做条件的是主键，唯一键，标识列)
+
+```
+
+代码示例：
+
+```sql
+-- 修改 Tom1 的班级为 3
+-- update Teacher set Class=3 注意一定要加【where 条件】限定，不然会把表中所有的值都给改变！！
+update Teacher set Class=3 where name='Tom1'
+
+-- 修改 Tom6 的性别为女，并扣100工资
+update Teacher set Gender=0, Salary-=1000 where name='Tom6'
+
+-- 【多条件】判断多条件 not and or 性别是男 同时 是3班的，工资加666
+update Teacher set Salary+=666 where Gender=1 and Class=3
+```
+
+
+
+## 数据删除
+
+模板：
+
+```sql
+-- 语法：
+-- delete [from] 表 where 条件
+-- 1. 删除时一条一条的删除，每一次删除都会将操作写入到日志文件（效率低）
+-- 2. 标识列的值不会从种子重新计算
+-- 3. 可以触发触发器
+```
+
+代码示例：
+
+```sql
+-- 删除姓名为 7 的人
+delete from Teacher where Name='7'
+
+-- 多条件删除
+delete from Teacher where Class='3' and Age<25
+
+-- 【delete】删除【所有】数据
+delete from Teacher
+```
+
+**删除所有数据**
+
+```sql
+-- 【delete】删除【所有】数据
+delete from Teacher
+
+-- 【truncate】删除【所有】数据
+-- 1. 标识列从种子值重新计算
+-- 2. 不可以触发触发器
+-- 语法：
+-- truncate table 表名（不能添加条件，因为他们不是一条一条的删除的，而是一次性删除所有记录，不关注删除的条数）
+truncate table Teacher
+
+-- 补充：公司里一般不回去直接去删除记录，而是用 update 做一个标记，标记此数据已经删除。但是其实没有删除
+```
+
+
 
 
 
