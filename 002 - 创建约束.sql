@@ -33,4 +33,6 @@ Add constraint DF_Teacher_Birthday default('1990-1-1') for Birthday		-- for 是说
 
 -- 5. 为 class 添加外键约束
 Alter table Teacher			-- 从表的某一个字段		引用			主表的某一个字段
+with nocheck				-- 不检查现有数据
 Add constraint FK_Teacher_Class foreign key(Class) references class(IdClass)
+on delete set null
