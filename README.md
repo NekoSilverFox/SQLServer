@@ -393,6 +393,48 @@ select Id as 工号, Name 姓名, 工资=Salary, 公司='雪狸' from Teacher wh
 select 1+1, 2, 3, 4, 5
 ```
 
+## top、distinct
+
+```sql
+select * from Student
+
+-- 【Top】使用 Top 只返回结果集的前 n 条
+select top 5 * from Student
+
+-- 【Top n percent】使用 Top 只返回结果集的前 n% 条，不是四舍五入的，而是取 Ceiling（向上取整）
+select top 10 percent * from Student
+
+
+-- 【distinct】去除重复，作用与原始数据表的记录无关，只与当前结果集有关系
+select distinct sex, Address from Student
+
+```
+
+## 聚合函数
+
+```sql
+-- 聚合函数
+-- MAX(最大值)、MIN(最小值)、AVG(平均值)、SUM(和)、COUNT(数量：记录的数量)
+-- SUM和AVG只能操作数值类型！比如日期、字符串不能做求和或平均值！
+-- 这些函数都会自动过滤null！
+
+
+select MAX(BornDate) from Student			-- 查询年龄最小的学员
+select MIN(BornDate) from Student			-- 查询年龄最小的学员
+
+select MIN(StudentName) from Student		-- 如果是字符串，按照字典序，得到最大或最小
+select MAX(StudentName) from Student
+
+select SUM(StudentResult) from Result where StudentNo=10	-- 查询学号是10学生的总分
+select AVG(StudentResult) from Result where StudentNo=10	-- 查询学号是10学生的总分
+
+select SUM(StudentResult) from Result where StudentNo=10	-- 查询学号是10学生的总分
+select AVG(StudentResult) from Result where StudentNo=10	-- 查询学号是10学生的总分
+
+-- COUNT 得到满足条件的记录数，会自动过滤null
+select COUNT(StudentName) from Student		-- 学生总人数
+```
+
 
 
 

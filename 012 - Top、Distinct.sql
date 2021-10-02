@@ -3,7 +3,7 @@ select * from Student
 -- 【Top】使用 Top 只返回结果集的前 n 条
 select top 5 * from Student
 
--- 【Top】使用 Top 只返回结果集的前 n% 条，不是四舍五入的，而是取 Ceiling（向上取整）
+-- 【Top n percent】使用 Top 只返回结果集的前 n% 条，不是四舍五入的，而是取 Ceiling（向上取整）
 select top 10 percent * from Student
 
 
