@@ -215,8 +215,8 @@ create table Teacher
 -- 检查约束（CK-Check）、默认值约束（DF-Default）、外键约束（FK-Foreign Key）
 
 -- 创建约束的语法
--- Alter table 表名
--- Add constraint 以简写为前缀的约束名称 约束类型 约束说明(字段 或 表达式 或 值)
+Alter table 表名
+Add constraint 以简写为前缀的约束名称 约束类型 约束说明(字段 或 表达式 或 值)
 ```
 
 实例代码：
@@ -260,7 +260,7 @@ on update set null 或者 default	-- 更新时外键表字段置为空或默认�
 -- 数据插入
 -- 语法：类似于C中的方法调用，顺序、数量和类型一一对应
 
--- insert [into] 表名(字段列表) values(值列表)
+insert [into] 表名(字段列表) values(值列表)
 -- 说明：标识列值不管什么时候都不能插入值，同时插入的值与要满足表的所有完整性约束
 ```
 
@@ -301,7 +301,7 @@ insert into Teacher values(8, '3', '0', '77', '6777', 1999-8-9)	-- Birthday 被�
 ```sql
 -- 数据更新
 -- 语法：
--- update 表名 set 字段=值或表达式, 字段=值或表达式 where 条件(一般是能够做条件的是主键，唯一键，标识列)
+update 表名 set 字段=值或表达式, 字段=值或表达式 where 条件(一般是能够做条件的是主键，唯一键，标识列)
 
 ```
 
@@ -327,7 +327,7 @@ update Teacher set Salary+=666 where Gender=1 and Class=3
 
 ```sql
 -- 语法：
--- delete [from] 表 where 条件
+delete [from] 表 where 条件
 -- 1. 删除时一条一条的删除，每一次删除都会将操作写入到日志文件（效率低）
 -- 2. 标识列的值不会从种子重新计算
 -- 3. 可以触发触发器
@@ -371,7 +371,7 @@ truncate table Teacher
 ```sql
 -- 单表查询数据索引
 -- 语法：
--- select 字段列表或* from 表列表 where 条件
+select 字段列表或* from 表列表 where 条件
 ```
 
 代码示例：
@@ -386,7 +386,7 @@ select Id, Name, Salary, Class from Teacher
 -- 指定查询条件：查询女老师
 select * from Teacher where Gender=0 and Age<30
 
--- 为列指定中文别名，只改变结果集的显示，不会修改原始的表结构
+-- 【重点】为列指定中文别名，只改变结果集的显示，不会修改原始的表结构
 select Id as 工号, Name 姓名, 工资=Salary, 公司='雪狸' from Teacher where Gender=0 and age<50
 
 -- Select 可以输出，只不过输出的是以【表的形式】输出结果集
