@@ -1,4 +1,8 @@
-# SQLServer
+# **SQLServer**
+
+[toc]
+
+
 
 ## SQL Server 主要特性
 
@@ -454,7 +458,7 @@ select * from Student where Sex='女' and BornDate between'1995-1-1' and '1999-1
 -- 查询1~4班的学员信息
 select * from Student where ClassID=1 or ClassID=2 or ClassID= 3 or ClassID=4
 
---【in】可以指定一个具体的范围，他可以取其中任意的值
+--【in】可以指定一个具体的范围，他可以取其中任意的值。【注意】括号里的值必须和前面的 ClassId 一致！！如果类型不一致并且程序无法隐式转换就会报错
 select * from Student where ClassId in (1,2,3,4)
 ```
 
@@ -486,7 +490,23 @@ select * from Student where StudentName not like '林%'
 select * from Student where StudentNo like '1[12345]'
 select * from Student where StudentNo like '1[1-5]'
 select * from Student where StudentNo like '[11-15]'	-- 【ERROR】系统会识别为 1 1-1 5，所以只会输出学号为1和5的，这里和正则一样，方括号里只能填0-9 a-z A-Z！
-select * from Student where StudentNo like '1[^1-5]'	-- 输出学号为10、17~19的
+select * from Student where StudentNo like '1[^1-5]'	-- 输出学号为10、16~19的
+```
+
+查询练习：
+
+```sql
+-- 1. 查询六期班中所有姓“周”的学员
+select classid from grade where classname='六期班'		<-- 这样可以查出（返回）六期班的ID
+select * from Student where StudentName like '周%' and ClassId=(select classid from grade where classname='六期班')
+
+-- 查询所有科目中包含 c 字符的科目信息
+select * from Subject where SubjectName like '%c%'
+
+-- 查询 office 最近一次考试时间
+select MAX(ExamDate) from Result where SubjectId=(select SubjectId from Subject where SubjectName='office')
+
+
 ```
 
 
@@ -597,6 +617,182 @@ select DataLength(nvarchar) from charTest	-- 输出：【4】收缩了，且一�
 或者以为Excel或者txt文件导入为数据库
 
 ![image-20211002062044254](README.assets/image-20211002062044254.png)
+
+
+
+## 用户权限
+
+![image-20211002122219592](README.assets/image-20211002122219592.png)
+
+---
+
+## 身份验证访问
+
+### 安全主体 Субъекты безопасности
+
+安全主体是使用 SQL Server 并可以为其分配执行操作的权限的标识的正式名称。 它们通常是人员或人员组，但可以是伪装成人员的其他实体。 安全主体可以使用列出的 Transact-SQL 或通过使用 SQL Server Management Studio来进行创建和管理
+
+---
+
+#### 登录名 Имена входа
+
+登录名是用于登录到 SQL Server 数据库引擎的单个用户帐户。 SQL Server 和 SQL 数据库 支持基于 Windows 身份验证的登录名和基于 SQL Server 身份验证的登录名。 
+
+---
+
+#### 固定服务器角色 Предопределенные роли сервера
+
+В SQL Server предопределенные роли сервера — это **набор предварительно настроенных ролей**, который представляет собой удобную группу разрешений на уровне сервера.
+
+在 SQL Server 中，固定服务器角色是一组预配置的角色，便于对服务器级别权限进行分组。 可以使用 `ALTER SERVER ROLE ... ADD MEMBER` 语句将登录名添加到角色。 SQL 数据库 不支持固定服务器角色，但在 master 数据库中有两个角色（`dbmanager` 和 `loginmanager`）充当服务器角色。
+
+---
+
+#### 用户定义的服务器角色 Определяемые пользователем роли сервера
+
+Именам входа доступ к базе данных предоставляется путем создания пользователя базы данных в базе данных и сопоставления этого пользователя базы данных с именем входа. Как правило, имя пользователя базы данных совпадает с именем входа, хотя это и необязательно. 
+
+在 SQL Server中，可以创建你自己的服务器角色并向它们分配服务器级权限。 可以使用 `ALTER SERVER ROLE ... ADD MEMBER` 语句将登录名添加到服务器角色。
+
+---
+
+#### 数据库用户 Пользователи базы данных
+
+通过在数据库中创建数据库用户并将该数据库用户映射到登录名来授予登录名对数据库的访问权限。 通常，数据库用户名与登录名相同，尽管它不必要相同。 每个数据库用户均映射到单个登录名。 一个登录名只能映射到数据库中的一个用户，但可以映射为多个不同数据库中的数据库用户。
+
+也可以创建不具有相应登录名的数据库用户。 这些数据库用户称为“包含的数据库用户” 。 Microsoft 鼓励使用包含的数据库用户，因为这样可以更轻松地将你的数据库移到另一个服务器。
+
+---
+
+#### 固定数据库角色 Предопределенные роли базы данных
+
+Предопределенные роли базы данных — это набор предварительно настроенных ролей, который представляет собой удобную группу разрешений на уровне базы данных
+
+固定数据库角色是一组预配置的提供方便的数据库级权限组的角色。 可以使用 `ALTER ROLE ... ADD MEMBER` 语句将数据库用户和用户定义的数据库角色添加到固定数据库角色。 有关详细信息，请参阅 [ALTER ROLE (Transact-SQL)](https://docs.microsoft.com/zh-cn/sql/t-sql/statements/alter-role-transact-sql?view=sql-server-ver15)。
+
+---
+
+#### 用户定义的数据库角色
+
+具有 `CREATE ROLE` 权限的用户可以创建新的用户定义的数据库角色来表示具有常用权限的用户组。 通常对整个角色授予或拒绝权限，从而简化了权限管理和监视。 可以使用 `ALTER ROLE ... ADD MEMBER` 语句向数据库角色添加数据库用户。 有关详细信息，请参阅 [ALTER ROLE (Transact-SQL)](https://docs.microsoft.com/zh-cn/sql/t-sql/statements/alter-role-transact-sql?view=sql-server-ver15)。
+
+---
+
+### 主体（数据库引擎）Субъекты 
+
+#### 数据库级的主体
+
+- 数据库用户（有 12 个类型的用户。 有关详细信息，请参阅 [CREATE USER](https://docs.microsoft.com/zh-cn/sql/t-sql/statements/create-user-transact-sql?view=sql-server-ver15)。）
+- 数据库角色
+- 应用程序角色
+
+---
+
+### 服务器级别角色 Роли уровня сервера
+
+SQL Server 提供**==服务器==级角色**以帮助你管理服务器上的权限。 这些角色是可组合其他主体的安全主体。 **服务器级角色的权限作用域为服务器范围。 （“角色”类似于 Windows 操作系统中的“组”）**
+
+SQL Server 提供了九种固定服务器角色。 无法更改授予固定服务器角色（public 角色除外）的权限。 从 SQL Server 2012 (11.x)开始，您可以创建用户定义的服务器角色，并将服务器级权限添加到用户定义的服务器角色。
+
+你可以将服务器级主体（SQL Server 登录名、Windows 帐户和 Windows 组）添加到服务器级角色。 固定服务器角色的每个成员都可以将其他登录名添加到该同一角色。 用户定义的服务器角色的成员则无法将其他服务器主体添加到角色。
+
+#### 服务器级的固定角色 Предопределенные роли уровня сервера
+
+| 服务器级的固定角色 | 说明                                                         |
+| :----------------- | :----------------------------------------------------------- |
+| **sysadmin**       | sysadmin 固定服务器角色的成员可以在服务器上**执行任何活动**。 |
+| **serveradmin**    | **serveradmin** 固定服务器角色的成员可以**更改服务器范围的配置选项和关闭服务器**。 |
+| **securityadmin**  | **securityadmin** 固定服务器角色的成员可以**管理登录名及其属性**。 他们可以 `GRANT`、`DENY` 和 `REVOKE` 服务器级权限。 他们还可以 `GRANT`、`DENY` 和 `REVOKE` 数据库级权限（如果他们具有数据库的访问权限）。 此外，他们还可以重置 SQL Server 登录名的密码。  **重要提示：** 如果能够授予对 数据库引擎 的访问权限和配置用户权限，安全管理员可以分配大多数服务器权限。 **securityadmin** 角色应视为与 **sysadmin** 角色等效。 |
+| **processadmin**   | processadmin 固定服务器角色的成员可以**终止在 SQL Server 实例中运行的进程**。 |
+| **setupadmin**     | setupadmin 固定服务器角色的成员可以使用 Transact-SQL 语句**添加和删除链接服务器**。 （使用 Management Studio 时需要 sysadmin 成员资格。） |
+| **bulkadmin**      | bulkadmin 固定服务器角色的成员**可以运行 `BULK INSERT` 语句**。  Linux 上的 SQL Server 不支持 bulkadmin 角色或管理大容量操作权限。 只有 sysadmin 才能对 Linux 上的 SQL Server 执行批量插入。 |
+| **diskadmin**      | diskadmin 固定服务器角色用于**管理磁盘文件**。               |
+| **dbcreator**      | **dbcreator** 固定服务器角色的成员可以**创建、更改、删除和还原任何数据库**。 |
+| **public**         | **每个 SQL Server 登录名都属于 public 服务器角色**。 如果未向某个服务器主体授予或拒绝对某个安全对象的特定权限，该用户将继承授予该对象的 public 角色的权限。 只有在希望所有用户都能使用对象时，才在对象上分配 Public 权限。 你无法更改具有 Public 角色的成员身份。  注意：public 与其他角色的实现方式不同，可通过 public 固定服务器角色授予、拒绝或撤销权限 。 |
+
+![fixed_server_role_permissions](https://docs.microsoft.com/zh-cn/sql/relational-databases/security/authentication-access/media/permissions-of-server-roles.png?view=sql-server-ver15)
+
+下表介绍了可以用于服务器级角色的命令、视图和功能。
+
+| Feature                                                      | 类型    | 说明                                                         |
+| :----------------------------------------------------------- | :------ | :----------------------------------------------------------- |
+| [sp_helpsrvrole (Transact-SQL)](https://docs.microsoft.com/zh-cn/sql/relational-databases/system-stored-procedures/sp-helpsrvrole-transact-sql?view=sql-server-ver15) | 元数据  | 返回服务器级角色的列表。                                     |
+| [sp_helpsrvrolemember (Transact-SQL)](https://docs.microsoft.com/zh-cn/sql/relational-databases/system-stored-procedures/sp-helpsrvrolemember-transact-sql?view=sql-server-ver15) | 元数据  | 返回有关服务器级角色成员的信息。                             |
+| [sp_srvrolepermission (Transact-SQL)](https://docs.microsoft.com/zh-cn/sql/relational-databases/system-stored-procedures/sp-srvrolepermission-transact-sql?view=sql-server-ver15) | 元数据  | 显示服务器级角色的权限。                                     |
+| [IS_SRVROLEMEMBER (Transact-SQL)](https://docs.microsoft.com/zh-cn/sql/t-sql/functions/is-srvrolemember-transact-sql?view=sql-server-ver15) | 元数据  | 指示 SQL Server 登录名是否为指定服务器级角色的成员。         |
+| [sys.server_role_members (Transact-SQL)](https://docs.microsoft.com/zh-cn/sql/relational-databases/system-catalog-views/sys-server-role-members-transact-sql?view=sql-server-ver15) | 元数据  | 为每个服务器级角色的每个成员返回一行。                       |
+| [CREATE SERVER ROLE (Transact-SQL)](https://docs.microsoft.com/zh-cn/sql/t-sql/statements/create-server-role-transact-sql?view=sql-server-ver15) | Command | **创建用户定义的服务器角色。**                               |
+| [ALTER SERVER ROLE (Transact-SQL)](https://docs.microsoft.com/zh-cn/sql/t-sql/statements/alter-server-role-transact-sql?view=sql-server-ver15) | Command | **更改服务器角色的成员关系或更改用户定义的服务器角色的名称。** |
+| [DROP SERVER ROLE (Transact-SQL)](https://docs.microsoft.com/zh-cn/sql/t-sql/statements/drop-server-role-transact-sql?view=sql-server-ver15) | Command | **删除用户定义的服务器角色。**                               |
+| [sp_addsrvrolemember (Transact-SQL)](https://docs.microsoft.com/zh-cn/sql/relational-databases/system-stored-procedures/sp-addsrvrolemember-transact-sql?view=sql-server-ver15) | Command | 将登录名添加为某个服务器级角色的成员。 已弃用。 应改用 [ALTER SERVER ROLE](https://docs.microsoft.com/zh-cn/sql/t-sql/statements/alter-server-role-transact-sql?view=sql-server-ver15) 。 |
+| [sp_dropsrvrolemember (Transact-SQL)](https://docs.microsoft.com/zh-cn/sql/relational-databases/system-stored-procedures/sp-dropsrvrolemember-transact-sql?view=sql-server-ver15) | Command | 从服务器级角色中删除 SQL Server 登录名或 Windows 用户或组。 已弃用。 应改用 [ALTER SERVER ROLE](https://docs.microsoft.com/zh-cn/sql/t-sql/statements/alter-server-role-transact-sql?view=sql-server-ver15) 。 |
+
+---
+
+
+
+
+
+### 数据库级别的角色 Роли уровня базы данных
+
+为便于管理**数据库**中的权限， SQL Server 提供了若干“角色” ，这些角色是用于对其他主体进行分组的安全主体。 它们类似于 ***Windows 操作系统中的*** 组 Microsoft 。 **==数据库级角色==的权限作用域为==数据库范围==**。
+
+若要向数据库角色添加和删除成员，请使用 `ADD MEMBER` ALTER ROLE `DROP MEMBER` 语句的 [和](https://docs.microsoft.com/zh-cn/sql/t-sql/statements/alter-role-transact-sql?view=sql-server-ver15) 选项。
+
+存在两种类型的数据库级角色：数据库中预定义的“固定数据库角色”和可以创建的“用户定义的数据库角色”。
+
+固定数据库角色是在数据库级别定义的，并且存在于每个数据库中。 **db_owner** 数据库角色的成员可以管理固定数据库角色成员身份。 msdb 数据库中还有一些特殊用途的数据库角色。
+
+可以向数据库级角色中添加任何数据库帐户和其他 SQL Server 角色。
+
+**固定数据库角色 предопределенные роли базы данных**
+
+| 固定数据库角色名      | 说明                                                         |
+| :-------------------- | :----------------------------------------------------------- |
+| **db_owner**          | **db_owner** 固定数据库角色的成员可以执行数据库的**所有配置和维护活动**，还可以**删除** SQL Server 中的**数据库**。 （在 SQL 数据库 和 Synapse Analytics 中，某些维护活动需要服务器级别权限，并且不能由 db_owners 执行。） |
+| **db_securityadmin**  | db_securityadmin 固定数据库角色的成员可以**仅**修改自定义角色的**角色成员资格和管理权限**。 此角色的成员可能会提升其权限，应监视其操作。 |
+| **db_accessadmin**    | **db_accessadmin** 固定数据库角色的成员可以为 Windows 登录名、Windows 组和 SQL Server **登录名添加或删除数据库访问权限**。 |
+| **db_backupoperator** | **db_backupoperator** 固定数据库角色的成员可以**备份数据库**。 |
+| **db_ddladmin**       | **db_ddladmin** 固定数据库角色的成员可以在数据库中**运行任何数据定义语言 (DDL) 命令**。（DDL命令创建或删除数据库，DML添加，移动或更改数据） |
+| **db_datawriter**     | **db_datawriter** 固定数据库角色的成员可以在**所有用户表中添加、删除或更改数据**。 |
+| **db_datareader**     | db_datareader 固定数据库角色的成员可以**从所有用户表和视图中读取所有数据**。 用户对象可能存在于除 sys 和 INFORMATION_SCHEMA 以外的任何架构中 。 |
+| **db_denydatawriter** | db_***deny***data**writer** 固定数据库角色的成员**不能添加、修改或删除数据库内用户表中的任何数据**。 |
+| **db_denydatareader** | db_***deny***data**reader** 固定数据库角色的成员**不能读取数据库内用户表和视图中的任何数据**。 |
+
+无法更改分配给固定数据库角色的权限。 下图显示了分配给固定数据库角色的权限：
+
+![fixed_database_role_permissions](https://docs.microsoft.com/zh-cn/sql/relational-databases/security/authentication-access/media/permissions-of-database-roles.png?view=sql-server-ver15)
+
+下表说明了用于数据库级角色的命令、视图和函数。
+
+| Feature                                                      | 类型     | 说明                                                         |
+| :----------------------------------------------------------- | :------- | :----------------------------------------------------------- |
+| [sp_helpdbfixedrole (Transact-SQL)](https://docs.microsoft.com/zh-cn/sql/relational-databases/system-stored-procedures/sp-helpdbfixedrole-transact-sql?view=sql-server-ver15) | 元数据   | 返回固定数据库角色的列表。                                   |
+| [sp_dbfixedrolepermission (Transact-SQL)](https://docs.microsoft.com/zh-cn/sql/relational-databases/system-stored-procedures/sp-dbfixedrolepermission-transact-sql?view=sql-server-ver15) | 元数据   | 显示固定数据库角色的权限。                                   |
+| [sp_helprole (Transact-SQL)](https://docs.microsoft.com/zh-cn/sql/relational-databases/system-stored-procedures/sp-helprole-transact-sql?view=sql-server-ver15) | 元数据   | 返回当前数据库中有关角色的信息。                             |
+| [sp_helprolemember (Transact-SQL)](https://docs.microsoft.com/zh-cn/sql/relational-databases/system-stored-procedures/sp-helprolemember-transact-sql?view=sql-server-ver15) | 元数据   | 返回有关当前数据库中某个角色的成员的信息。                   |
+| [sys.database_role_members (Transact-SQL)](https://docs.microsoft.com/zh-cn/sql/relational-databases/system-catalog-views/sys-database-role-members-transact-sql?view=sql-server-ver15) | 元数据   | 为每个数据库角色的每个成员返回一行。                         |
+| [IS_MEMBER (Transact-SQL)](https://docs.microsoft.com/zh-cn/sql/t-sql/functions/is-member-transact-sql?view=sql-server-ver15) | 元数据   | 指示当前用户是否为指定 Microsoft Windows 组或 Microsoft SQL Server 数据库角色的成员。 |
+| [CREATE ROLE (Transact-SQL)](https://docs.microsoft.com/zh-cn/sql/t-sql/statements/create-role-transact-sql?view=sql-server-ver15) | Command  | 在当前数据库中创建新的数据库角色。                           |
+| [ALTER ROLE (Transact-SQL)](https://docs.microsoft.com/zh-cn/sql/t-sql/statements/alter-role-transact-sql?view=sql-server-ver15) | Command  | 更改数据库角色的名称或成员身份。                             |
+| [DROP ROLE (Transact-SQL)](https://docs.microsoft.com/zh-cn/sql/t-sql/statements/drop-role-transact-sql?view=sql-server-ver15) | Command  | 从数据库中删除角色。                                         |
+| [sp_addrole (Transact-SQL)](https://docs.microsoft.com/zh-cn/sql/relational-databases/system-stored-procedures/sp-addrole-transact-sql?view=sql-server-ver15) | Command  | 在当前数据库中创建新的数据库角色。                           |
+| [sp_droprole (Transact-SQL)](https://docs.microsoft.com/zh-cn/sql/relational-databases/system-stored-procedures/sp-droprole-transact-sql?view=sql-server-ver15) | Command  | 从当前数据库中删除数据库角色。                               |
+| [sp_addrolemember (Transact-SQL)](https://docs.microsoft.com/zh-cn/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-ver15) | Command  | 为当前数据库中的数据库角色添加数据库用户、数据库角色、Windows 登录名或 Windows 组。 除 Analytics Platform System (PDW) 和 Azure Synapse 外，所有平台都应改为使用 `ALTER ROLE` 。 |
+| [sp_droprolemember (Transact-SQL)](https://docs.microsoft.com/zh-cn/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql?view=sql-server-ver15) | Command  | 从当前数据库的 SQL Server 角色中删除安全帐户。 除 Analytics Platform System (PDW) 和 Azure Synapse 外，所有平台都应改为使用 `ALTER ROLE` 。 |
+| [GRANT](https://docs.microsoft.com/zh-cn/sql/t-sql/statements/grant-transact-sql?view=sql-server-ver15) | **权限** | **向角色添加权限。**                                         |
+| [DENY](https://docs.microsoft.com/zh-cn/sql/t-sql/statements/deny-transact-sql?view=sql-server-ver15) | **权限** | **拒绝向角色授予权限。**                                     |
+| [REVOKE](https://docs.microsoft.com/zh-cn/sql/t-sql/statements/revoke-transact-sql?view=sql-server-ver15) | **权限** | **撤消以前授予或拒绝的权限。**                               |
+
+### 应用程序角色 Роли приложений
+
+应用程序角色是一个数据库主体，它使应用程序能够用其自身的、类似用户的权限来运行。 使用应用程序角色，可以只允许通过特定应用程序连接的用户访问特定数据。 与数据库角色不同的是，应用程序角色默认情况下不包含任何成员，而且是非活动的。 可以使用 **sp_setapprole** 启用应用程序角色，该过程需要密码。 因为应用程序角色是数据库级主体，所以它们只能通过其他数据库中为 **guest** 授予的权限来访问这些数据库。 因此，其他数据库中的应用程序角色将无法访问任何已禁用 **guest** 的数据库。
+
+在 SQL Server中，应用程序角色无法访问服务器级元数据，因为它们不与服务器级主体关联。 若要禁用此限制，从而允许应用程序角色访问服务器级元数据，请设置全局标志 4616。 有关详细信息，请参阅[跟踪标志 (Transact-SQL)](https://docs.microsoft.com/zh-cn/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql?view=sql-server-ver15) 和 [DBCC TRACEON (Transact-SQL)](https://docs.microsoft.com/zh-cn/sql/t-sql/database-console-commands/dbcc-traceon-transact-sql?view=sql-server-ver15)。
+
+
+
+
 
 
 
