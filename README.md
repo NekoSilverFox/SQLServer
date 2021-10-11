@@ -511,6 +511,23 @@ select MAX(ExamDate) from Result where SubjectId=(select SubjectId from Subject 
 
 
 
+## 空值处理
+
+- 数据库中一个列没有指定值，那么值就是 `null`，数据库中 `null` 表示**不知道**，而不是表示没有。因为 `select null + 1`结果还是 null，因为 `不知道 + 1` 还是不知道
+- 注意：数据中中的 `null` 和 C#中的 `null` 不一样！！
+
+```sql
+-- 查询没有电子邮箱的学员信息
+select * from Student where Email is null
+
+update Student set Email=null where StudentNo=9
+
+select * from Student where Email is not null
+
+-- 【ISNULL】ISNULL如果发现对应值是NULL值，则以指定文本进行替换【只是做一个结果集的替换，并没有修改源数据】
+select StudentNo, StudentName, ISNULL(Email, '没有填写') from Student
+```
+
 
 
 ## Transact-SQL 修改
@@ -680,6 +697,8 @@ select DataLength(nvarchar) from charTest	-- 输出：【4】收缩了，且一�
 
 ### 主体（数据库引擎）Субъекты 
 
+> **主体** - 可以看作是一个最小单位，它不能够再次进行分割
+
 #### 数据库级的主体
 
 - 数据库用户（有 12 个类型的用户。 有关详细信息，请参阅 [CREATE USER](https://docs.microsoft.com/zh-cn/sql/t-sql/statements/create-user-transact-sql?view=sql-server-ver15)。）
@@ -692,9 +711,9 @@ select DataLength(nvarchar) from charTest	-- 输出：【4】收缩了，且一�
 
 SQL Server 提供**==服务器==级角色**以帮助你管理服务器上的权限。 这些角色是可组合其他主体的安全主体。 **服务器级角色的权限作用域为服务器范围。 （“角色”类似于 Windows 操作系统中的“组”）**
 
-SQL Server 提供了九种固定服务器角色。 无法更改授予固定服务器角色（public 角色除外）的权限。 从 SQL Server 2012 (11.x)开始，您可以创建用户定义的服务器角色，并将服务器级权限添加到用户定义的服务器角色。
+SQL Server 提供了九种固定服务器角色。 无法更改授予固定服务器角色（public 角色除外）的权限。 从 SQL Server 2012 (11.x)开始，**您可以创建用户定义的服务器角色，并将服务器级权限添加到用户定义的服务器角色。**
 
-你可以将服务器级主体（SQL Server 登录名、Windows 帐户和 Windows 组）添加到服务器级角色。 固定服务器角色的每个成员都可以将其他登录名添加到该同一角色。 用户定义的服务器角色的成员则无法将其他服务器主体添加到角色。
+你可以将服务器级主体（SQL Server 登录名、Windows 帐户和 Windows 组）添加到服务器级角色。 固定服务器角色的每个成员都可以将其他登录名添加到该同一角色。 **用户定义的服务器角色的成员则无法将其他服务器主体添加到角色。**
 
 #### 服务器级的固定角色 Предопределенные роли уровня сервера
 
@@ -702,10 +721,10 @@ SQL Server 提供了九种固定服务器角色。 无法更改授予固定服�
 | :----------------- | :----------------------------------------------------------- |
 | **sysadmin**       | sysadmin 固定服务器角色的成员可以在服务器上**执行任何活动**。 |
 | **serveradmin**    | **serveradmin** 固定服务器角色的成员可以**更改服务器范围的配置选项和关闭服务器**。 |
-| **securityadmin**  | **securityadmin** 固定服务器角色的成员可以**管理登录名及其属性**。 他们可以 `GRANT`、`DENY` 和 `REVOKE` 服务器级权限。 他们还可以 `GRANT`、`DENY` 和 `REVOKE` 数据库级权限（如果他们具有数据库的访问权限）。 此外，他们还可以重置 SQL Server 登录名的密码。  **重要提示：** 如果能够授予对 数据库引擎 的访问权限和配置用户权限，安全管理员可以分配大多数服务器权限。 **securityadmin** 角色应视为与 **sysadmin** 角色等效。 |
+| **securityadmin**  | **securityadmin** 固定服务器角色的成员可以**管理登录名及其属性**。 **他们可以 `GRANT`、`DENY` 和 `REVOKE` 服务器级权限。** 他们还可以 `GRANT`、`DENY` 和 `REVOKE` 数据库级权限（如果他们具有数据库的访问权限）。 此外，他们还可以重置 SQL Server 登录名的密码。  **重要提示：** 如果能够授予对 数据库引擎 的访问权限和配置用户权限，安全管理员可以分配大多数服务器权限。 **securityadmin** 角色应视为与 **sysadmin** 角色等效。 |
 | **processadmin**   | processadmin 固定服务器角色的成员可以**终止在 SQL Server 实例中运行的进程**。 |
 | **setupadmin**     | setupadmin 固定服务器角色的成员可以使用 Transact-SQL 语句**添加和删除链接服务器**。 （使用 Management Studio 时需要 sysadmin 成员资格。） |
-| **bulkadmin**      | bulkadmin 固定服务器角色的成员**可以运行 `BULK INSERT` 语句**。  Linux 上的 SQL Server 不支持 bulkadmin 角色或管理大容量操作权限。 只有 sysadmin 才能对 Linux 上的 SQL Server 执行批量插入。 |
+| **bulkadmin**      | bulkadmin 固定服务器角色的成员**可以运行 `BULK INSERT` 语句** *（在SQL Server中，BULK INSERT是用来将外部文件以一种特定的格式加载到数据库表的T-SQL命令。 ）*。  Linux 上的 SQL Server 不支持 bulkadmin 角色或管理大容量操作权限。 只有 sysadmin 才能对 Linux 上的 SQL Server 执行批量插入。 |
 | **diskadmin**      | diskadmin 固定服务器角色用于**管理磁盘文件**。               |
 | **dbcreator**      | **dbcreator** 固定服务器角色的成员可以**创建、更改、删除和还原任何数据库**。 |
 | **public**         | **每个 SQL Server 登录名都属于 public 服务器角色**。 如果未向某个服务器主体授予或拒绝对某个安全对象的特定权限，该用户将继承授予该对象的 public 角色的权限。 只有在希望所有用户都能使用对象时，才在对象上分配 Public 权限。 你无法更改具有 Public 角色的成员身份。  注意：public 与其他角色的实现方式不同，可通过 public 固定服务器角色授予、拒绝或撤销权限 。 |
