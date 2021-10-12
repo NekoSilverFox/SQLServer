@@ -63,7 +63,9 @@ if (1 = 1)
 
 ---
 
-## CREATE 数据库的创建
+## 增、删、改、查
+
+### CREATE 数据库的创建
 
 创建模板：
 
@@ -150,7 +152,7 @@ log on
 
 
 
-## CREATE 创建数据表
+### CREATE 创建数据表
 
 模板：
 
@@ -186,7 +188,7 @@ create table Teacher
 
 
 
-## CONSTRAINT 数据完整性
+### CONSTRAINT 数据完整性
 
 - **实体完整性**：表的每一行数据就称为一个实体，实体完整性是指每一行的记录是唯一的，不重复的
   - **标识列**：系统自动生成，永远不会重复
@@ -268,7 +270,7 @@ on delete set null 或者 default	-- 删除时外键表字段置为空或默认�
 on update set null 或者 default	-- 更新时外键表字段置为空或默认值
 ```
 
-## INSEART 数据插入
+### INSEART 数据插入
 
 模板：
 
@@ -310,7 +312,7 @@ insert into Teacher values(7, '3', '0', '77', '6777', '1999-8-9')
 insert into Teacher values(8, '3', '0', '77', '6777', 1999-8-9)	-- Birthday 被设置成了系统默认值（1905-06-06）
 ```
 
-## UPDATE 数据更新
+### UPDATE 数据更新
 
 模板：
 
@@ -337,7 +339,7 @@ update Teacher set Salary+=666 where Gender=1 and Class=3
 
 
 
-## DELETE 数据删除
+### DELETE 数据删除
 
 模板：
 
@@ -631,9 +633,10 @@ select 'fox', 'fox' union
 select 'fox2', 'fox2'
 
 
--- select into from：可以将 from 数据源表中 select 指定的列的数据 into 到新表中，新表是系统自动生成的，不能人为先创建，也就是之前不能存在
+-- select into from：可以将 from 数据源表中 select 指定的列的数据 into 到新表中（表结构保持一致），新表是系统自动生成的，不能人为先创建，也就是之前不能存在
 select * into newtable from Student
 delete from newtable
+select top 0 * newttt from Student		-- 【重点】只要一个表结构，但只保留null/not null 主键，其他的都没有了
 
 -- insert into 表 selete from：可以将select查询语句中获取的数据into到指定表，【表需要先存在】
 insert into newtable select Studentname,Loginpwd, sex, classid, phone, address, borndate, email, isDel from Student

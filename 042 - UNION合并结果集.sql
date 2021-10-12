@@ -30,9 +30,10 @@ select 'fox', 'fox' union
 select 'fox2', 'fox2'
 
 
--- select into from：可以将 from 数据源表中 select 指定的列的数据 into 到新表中，新表是系统自动生成的，不能人为先创建，也就是之前不能存在
+-- select into from：可以将 from 数据源表中 select 指定的列的数据 into 到新表中（表结构保持一致），新表是系统自动生成的，不能人为先创建，也就是之前不能存在
 select * into newtable from Student
 delete from newtable
+select top 0 * newttt from Student		-- 【重点】只要一个表结构，但只保留null/not null 主键，其他的都没有了
 
 -- insert into 表 selete from：可以将select查询语句中获取的数据into到指定表，【表需要先存在】
 insert into newtable select Studentname,Loginpwd, sex, classid, phone, address, borndate, email, isDel from Student
