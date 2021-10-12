@@ -1,10 +1,22 @@
-# **SQLServer**
+<p align="center">
+ <img width="100px" src="https://github.com/NekoSilverFox/NekoSilverfox/blob/master/icons/silverfox.svg" align="center" alt="SQL Server" />
+ <h1 align="center">SQL Server</h2>
+ <p align="center"><b>Based on Microsoft SQL Server 2019</b></p>
+</p>
+
+
+<div align=center>
+
+[![License](https://img.shields.io/badge/license-Apache%202.0-brightgreen)](LICENSE)
+
+
+<div align=left>
 
 [toc]
 
+## 前言
 
-
-## SQL Server 主要特性
+### SQL Server 主要特性
 
 - SQL Server 是一个**关系型数据库管理系统**
 - 高性能设计，可充分利用 WindowsNT 的优势
@@ -12,11 +24,11 @@
 - 强壮的事务处理功能，采用各种方法保证数据的完整性（事务：完成一个操作，所需要的完整步骤。比如 A 向 B 转账 1000人民币，操作是：A 扣除1000，B再增加1000.但如果A处理的时候宕机了，强壮的事务处理功能会回滚）
 - 支持对称多处理器结构、存储过程、ODBC，并具有自主的 SQL 语言。SQLServer 以其内置的数据赋值功能、强大的管理工具、与 Internet 的紧密集成和开放的系统结构为广大的用户、开发人员和系统集成商提供了一个出众的数据库管理平台
 
-## 语言运用
+### 语言运用
 
 SQL语句可以用来执行各种各样的操作，例如更新数据库中的数据，从数据库中提取数据等。目前，绝大多数流行的关系型数据库管理系统，如 Oracle，Sybase，Microsoft SQL Server，Access 等都采用了 SQL 语言标准。虽然很多数据库都对SQL语句进行了再开发和扩展，但是包括 Select、Insert、Update、Delete、Create，以及 Drop 在内的标准的 SQL 命令仍然可以被用来完成几乎所有的数据库操作
 
-## SLQ 语句入门
+### SLQ 语句入门
 
 ```sql
 -- 在 SQL 中没有双引号 `" "`，所有的字符都使用单引号 `' '` 包含
@@ -49,9 +61,9 @@ if (1 = 1)
   - DCL：数据库控制语言
     - Grant 授权、Revoke 取消授权
 
+---
 
-
-## 数据库的创建
+## CREATE 数据库的创建
 
 创建模板：
 
@@ -138,7 +150,7 @@ log on
 
 
 
-## 创建数据表
+## CREATE 创建数据表
 
 模板：
 
@@ -174,7 +186,7 @@ create table Teacher
 
 
 
-## 数据完整性
+## CONSTRAINT 数据完整性
 
 - **实体完整性**：表的每一行数据就称为一个实体，实体完整性是指每一行的记录是唯一的，不重复的
   - **标识列**：系统自动生成，永远不会重复
@@ -256,7 +268,7 @@ on delete set null 或者 default	-- 删除时外键表字段置为空或默认�
 on update set null 或者 default	-- 更新时外键表字段置为空或默认值
 ```
 
-## 数据插入
+## INSEART 数据插入
 
 模板：
 
@@ -298,7 +310,7 @@ insert into Teacher values(7, '3', '0', '77', '6777', '1999-8-9')
 insert into Teacher values(8, '3', '0', '77', '6777', 1999-8-9)	-- Birthday 被设置成了系统默认值（1905-06-06）
 ```
 
-## 数据更新
+## UPDATE 数据更新
 
 模板：
 
@@ -325,7 +337,7 @@ update Teacher set Salary+=666 where Gender=1 and Class=3
 
 
 
-## 数据删除
+## DELETE 数据删除
 
 模板：
 
@@ -366,9 +378,9 @@ truncate table Teacher
 -- 补充：公司里一般不回去直接去删除记录，而是用 update 做一个标记，标记此数据已经删除。但是其实没有删除
 ```
 
+## SELECT 查询
 
-
-## 单表查询
+### 单表查询
 
 模板：
 
@@ -397,7 +409,7 @@ select Id as 工号, Name 姓名, 工资=Salary, 公司='雪狸' from Teacher wh
 select 1+1, 2, 3, 4, 5
 ```
 
-## top、distinct
+### top、distinct
 
 ```sql
 select * from Student
@@ -414,7 +426,7 @@ select distinct sex, Address from Student
 
 ```
 
-## 聚合函数
+### 聚合函数
 
 ```sql
 -- 聚合函数
@@ -439,7 +451,7 @@ select AVG(StudentResult) from Result where StudentNo=10	-- 查询学号是10学
 select COUNT(StudentName) from Student		-- 学生总人数
 ```
 
-## 条件查询
+### 条件查询
 
 ```sql
 -- 【where】带条件的查询
@@ -462,7 +474,7 @@ select * from Student where ClassID=1 or ClassID=2 or ClassID= 3 or ClassID=4
 select * from Student where ClassId in (1,2,3,4)
 ```
 
-## 模糊查询
+### 模糊查询
 
 ```sql
 -- 模糊查询
@@ -511,7 +523,7 @@ select MAX(ExamDate) from Result where SubjectId=(select SubjectId from Subject 
 
 
 
-## 空值处理
+### 空值处理
 
 - 数据库中一个列没有指定值，那么值就是 `null`，数据库中 `null` 表示**不知道**，而不是表示没有。因为 `select null + 1`结果还是 null，因为 `不知道 + 1` 还是不知道
 - 注意：数据中中的 `null` 和 C#中的 `null` 不一样！！
@@ -530,7 +542,7 @@ select StudentNo, StudentName, ISNULL(Email, '没有填写') from Student
 
 
 
-## 数据排序
+### 数据排序
 
 ```sql
 -- 格式：select 字段列表 from 表列表 where 条件 order by (排序字段列表)对结果集进行记录重排
@@ -542,7 +554,7 @@ select * from Student where sex='女' order by BornDate desc, StudentNo asc
 
 
 
-## 分组统计
+### 分组统计
 
 ```sql
 -- 数据分组-统计信息
