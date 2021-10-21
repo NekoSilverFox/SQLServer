@@ -1,0 +1,22 @@
+C:\Users\mi\Desktop\Programma\SQL\C#\001 - 增加班级信息\bin\Debug\netcoreapp3.1\001 - 增加班级信息.exe
+C:\Users\mi\Desktop\Programma\SQL\C#\001 - 增加班级信息\obj\Debug\netcoreapp3.1\001 - 增加班级信息.csprojAssemblyReference.cache
+C:\Users\mi\Desktop\Programma\SQL\C#\001 - 增加班级信息\obj\Debug\netcoreapp3.1\_001___增加班级信息.Form1.resources
+C:\Users\mi\Desktop\Programma\SQL\C#\001 - 增加班级信息\obj\Debug\netcoreapp3.1\001 - 增加班级信息.csproj.GenerateResource.cache
+C:\Users\mi\Desktop\Programma\SQL\C#\001 - 增加班级信息\obj\Debug\netcoreapp3.1\001 - 增加班级信息.AssemblyInfoInputs.cache
+C:\Users\mi\Desktop\Programma\SQL\C#\001 - 增加班级信息\obj\Debug\netcoreapp3.1\001 - 增加班级信息.AssemblyInfo.cs
+C:\Users\mi\Desktop\Programma\SQL\C#\001 - 增加班级信息\obj\Debug\netcoreapp3.1\001 - 增加班级信息.csproj.CoreCompileInputs.cache
+C:\Users\mi\Desktop\Programma\SQL\C#\001 - 增加班级信息\bin\Debug\netcoreapp3.1\001 - 增加班级信息.deps.json
+C:\Users\mi\Desktop\Programma\SQL\C#\001 - 增加班级信息\bin\Debug\netcoreapp3.1\001 - 增加班级信息.runtimeconfig.json
+C:\Users\mi\Desktop\Programma\SQL\C#\001 - 增加班级信息\bin\Debug\netcoreapp3.1\001 - 增加班级信息.runtimeconfig.dev.json
+C:\Users\mi\Desktop\Programma\SQL\C#\001 - 增加班级信息\bin\Debug\netcoreapp3.1\001 - 增加班级信息.dll
+C:\Users\mi\Desktop\Programma\SQL\C#\001 - 增加班级信息\bin\Debug\netcoreapp3.1\001 - 增加班级信息.pdb
+C:\Users\mi\Desktop\Programma\SQL\C#\001 - 增加班级信息\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
+C:\Users\mi\Desktop\Programma\SQL\C#\001 - 增加班级信息\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+C:\Users\mi\Desktop\Programma\SQL\C#\001 - 增加班级信息\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+C:\Users\mi\Desktop\Programma\SQL\C#\001 - 增加班级信息\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+C:\Users\mi\Desktop\Programma\SQL\C#\001 - 增加班级信息\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\mi\Desktop\Programma\SQL\C#\001 - 增加班级信息\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\mi\Desktop\Programma\SQL\C#\001 - 增加班级信息\obj\Debug\netcoreapp3.1\001 - 增加班级信息.csproj.CopyComplete
+C:\Users\mi\Desktop\Programma\SQL\C#\001 - 增加班级信息\obj\Debug\netcoreapp3.1\001 - 增加班级信息.dll
+C:\Users\mi\Desktop\Programma\SQL\C#\001 - 增加班级信息\obj\Debug\netcoreapp3.1\001 - 增加班级信息.pdb
+C:\Users\mi\Desktop\Programma\SQL\C#\001 - 增加班级信息\obj\Debug\netcoreapp3.1\001 - 增加班级信息.genruntimeconfig.cache
