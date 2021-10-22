@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30104.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "001 - 增加班级信息", "001 - 增加班级信息.csproj", "{712C0DC8-5DBA-4ED1-8358-17DF8EAF9E19}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "001 - 增加班级信息", "001 - 增加班级信息.csproj", "{712C0DC8-5DBA-4ED1-8358-17DF8EAF9E19}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "002 - 方法只是用来接收合适的返回值", "..\002 - 方法只是用来接收合适的返回值\002 - 方法只是用来接收合适的返回值.csproj", "{B24527FF-EDFB-493B-A044-59075C989E0A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{712C0DC8-5DBA-4ED1-8358-17DF8EAF9E19}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{712C0DC8-5DBA-4ED1-8358-17DF8EAF9E19}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{712C0DC8-5DBA-4ED1-8358-17DF8EAF9E19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B24527FF-EDFB-493B-A044-59075C989E0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B24527FF-EDFB-493B-A044-59075C989E0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B24527FF-EDFB-493B-A044-59075C989E0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B24527FF-EDFB-493B-A044-59075C989E0A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

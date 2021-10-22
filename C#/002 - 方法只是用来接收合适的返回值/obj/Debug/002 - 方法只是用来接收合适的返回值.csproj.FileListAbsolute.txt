@@ -1,0 +1,10 @@
+C:\Users\mi\Desktop\Programma\SQL\C#\002 - 方法只是用来接收合适的返回值\bin\Debug\002 - 方法只是用来接收合适的返回值.exe.config
+C:\Users\mi\Desktop\Programma\SQL\C#\002 - 方法只是用来接收合适的返回值\bin\Debug\002 - 方法只是用来接收合适的返回值.exe
+C:\Users\mi\Desktop\Programma\SQL\C#\002 - 方法只是用来接收合适的返回值\bin\Debug\002 - 方法只是用来接收合适的返回值.pdb
+C:\Users\mi\Desktop\Programma\SQL\C#\002 - 方法只是用来接收合适的返回值\obj\Debug\002 - 方法只是用来接收合适的返回值.csprojAssemblyReference.cache
+C:\Users\mi\Desktop\Programma\SQL\C#\002 - 方法只是用来接收合适的返回值\obj\Debug\_002___方法只是用来接收合适的返回值.Form1.resources
+C:\Users\mi\Desktop\Programma\SQL\C#\002 - 方法只是用来接收合适的返回值\obj\Debug\_002___方法只是用来接收合适的返回值.Properties.Resources.resources
+C:\Users\mi\Desktop\Programma\SQL\C#\002 - 方法只是用来接收合适的返回值\obj\Debug\002 - 方法只是用来接收合适的返回值.csproj.GenerateResource.cache
+C:\Users\mi\Desktop\Programma\SQL\C#\002 - 方法只是用来接收合适的返回值\obj\Debug\002 - 方法只是用来接收合适的返回值.csproj.CoreCompileInputs.cache
+C:\Users\mi\Desktop\Programma\SQL\C#\002 - 方法只是用来接收合适的返回值\obj\Debug\002 - 方法只是用来接收合适的返回值.exe
+C:\Users\mi\Desktop\Programma\SQL\C#\002 - 方法只是用来接收合适的返回值\obj\Debug\002 - 方法只是用来接收合适的返回值.pdb
