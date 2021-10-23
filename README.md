@@ -582,7 +582,9 @@ select top 2 ClassId, sex, COUNT(*) as cnt from student where email is not null 
 
 ```
 
-## SELECT 子查询
+## SELECT  子查询
+
+### SELECT  独立子查询
 
 ```SQL
 -- 子查询：
@@ -599,6 +601,23 @@ SELECT * FROM STUDENT WHERE ClassId=
 		SELECT ClassId FROM grade WHERE classname='七期班'
 	)
 ```
+
+### SELECT 相关子查询
+
+```sql
+-- 相关子查询：子查询中引用了父查询的结果
+USE CZSchool
+	SELECT * FROM Student WHERE StudentNo=
+	(
+		SELECT DISTINCT StudentNo FROM Result WHERE StudentNo=Student.StudentNo
+	)
+```
+
+
+
+
+
+
 
 
 
