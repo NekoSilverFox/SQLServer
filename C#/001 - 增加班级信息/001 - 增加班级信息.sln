@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "001 - 增加班级信息", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "002 - 方法只是用来接收合适的返回值", "..\002 - 方法只是用来接收合适的返回值\002 - 方法只是用来接收合适的返回值.csproj", "{B24527FF-EDFB-493B-A044-59075C989E0A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "003 - 获取标识列", "..\003 - 获取标识列\003 - 获取标识列.csproj", "{FBEE0929-E907-4E7A-91AD-5E58B56E14BC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{B24527FF-EDFB-493B-A044-59075C989E0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B24527FF-EDFB-493B-A044-59075C989E0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B24527FF-EDFB-493B-A044-59075C989E0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBEE0929-E907-4E7A-91AD-5E58B56E14BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBEE0929-E907-4E7A-91AD-5E58B56E14BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBEE0929-E907-4E7A-91AD-5E58B56E14BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBEE0929-E907-4E7A-91AD-5E58B56E14BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

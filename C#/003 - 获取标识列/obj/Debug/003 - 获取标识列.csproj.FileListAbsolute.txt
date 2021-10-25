@@ -1,0 +1,10 @@
+C:\Users\mi\Desktop\Programma\SQL\C#\003 - 获取标识列\bin\Debug\003 - 获取标识列.exe.config
+C:\Users\mi\Desktop\Programma\SQL\C#\003 - 获取标识列\bin\Debug\003 - 获取标识列.exe
+C:\Users\mi\Desktop\Programma\SQL\C#\003 - 获取标识列\bin\Debug\003 - 获取标识列.pdb
+C:\Users\mi\Desktop\Programma\SQL\C#\003 - 获取标识列\obj\Debug\003 - 获取标识列.csprojAssemblyReference.cache
+C:\Users\mi\Desktop\Programma\SQL\C#\003 - 获取标识列\obj\Debug\_003___获取标识列.Form1.resources
+C:\Users\mi\Desktop\Programma\SQL\C#\003 - 获取标识列\obj\Debug\_003___获取标识列.Properties.Resources.resources
+C:\Users\mi\Desktop\Programma\SQL\C#\003 - 获取标识列\obj\Debug\003 - 获取标识列.csproj.GenerateResource.cache
+C:\Users\mi\Desktop\Programma\SQL\C#\003 - 获取标识列\obj\Debug\003 - 获取标识列.csproj.CoreCompileInputs.cache
+C:\Users\mi\Desktop\Programma\SQL\C#\003 - 获取标识列\obj\Debug\003 - 获取标识列.exe
+C:\Users\mi\Desktop\Programma\SQL\C#\003 - 获取标识列\obj\Debug\003 - 获取标识列.pdb
