@@ -58,5 +58,40 @@ namespace _004___创建读取器对象读取数据
                 }
             }
         }
+
+        // 视图是否被选中
+        private void lvClass_Click(object sender, EventArgs e)
+        {
+            // 先判断是否被选中 (P55)
+            if (this.lvClasses.SelectedItems.Count == 0)
+            {
+                return;
+            }
+
+            txtClassName.Tag = this.lvClasses.SelectedItems[0].SubItems[0].Text;
+            txtClassName.Text = this.lvClasses.SelectedItems[0].SubItems[1].Text;
+        }
+
+        // 按钮
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            string connStr = "server=DESKTOP-HMF772I\\SQLSERVER;uid=sa;pwd=123;database=CZSchool";
+
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                conn.Open();
+
+                string sql = string.Format("UPDATE GRADE SET CLASSNAME='{0}' WHERE CLASSID='{1}'",
+                    txtClassName.Text.Trim(),
+                    txtClassName.Tag.ToString());
+
+                SqlCommand comm = new SqlCommand(sql, conn);
+                int isSuc = comm.ExecuteNonQuery();
+
+                MessageBox.Show(isSuc.ToString() + " 条行受影响");
+
+            }
+        }
     }
 }
+

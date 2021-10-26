@@ -44,6 +44,7 @@
             this.btnUpdate.TabIndex = 0;
             this.btnUpdate.Text = "修改";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // txtClassName
             // 
@@ -67,6 +68,7 @@
             this.lvClasses.UseCompatibleStateImageBehavior = false;
             this.lvClasses.View = System.Windows.Forms.View.Details;
             this.lvClasses.SelectedIndexChanged += new System.EventHandler(this.lvVlasses_SelectedIndexChanged);
+            this.lvClasses.Click += new System.EventHandler(this.lvClass_Click);
             // 
             // columnHeader1
             // 
