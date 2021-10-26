@@ -1,0 +1,10 @@
+C:\Users\mi\Desktop\Programma\SQL\C#\005 - 几种创建连接字符串的方法\bin\Debug\005 - 几种创建连接字符串的方法.exe.config
+C:\Users\mi\Desktop\Programma\SQL\C#\005 - 几种创建连接字符串的方法\bin\Debug\005 - 几种创建连接字符串的方法.exe
+C:\Users\mi\Desktop\Programma\SQL\C#\005 - 几种创建连接字符串的方法\bin\Debug\005 - 几种创建连接字符串的方法.pdb
+C:\Users\mi\Desktop\Programma\SQL\C#\005 - 几种创建连接字符串的方法\obj\Debug\005 - 几种创建连接字符串的方法.csprojAssemblyReference.cache
+C:\Users\mi\Desktop\Programma\SQL\C#\005 - 几种创建连接字符串的方法\obj\Debug\_005___几种创建连接字符串的方法.Form1.resources
+C:\Users\mi\Desktop\Programma\SQL\C#\005 - 几种创建连接字符串的方法\obj\Debug\_005___几种创建连接字符串的方法.Properties.Resources.resources
+C:\Users\mi\Desktop\Programma\SQL\C#\005 - 几种创建连接字符串的方法\obj\Debug\005 - 几种创建连接字符串的方法.csproj.GenerateResource.cache
+C:\Users\mi\Desktop\Programma\SQL\C#\005 - 几种创建连接字符串的方法\obj\Debug\005 - 几种创建连接字符串的方法.csproj.CoreCompileInputs.cache
+C:\Users\mi\Desktop\Programma\SQL\C#\005 - 几种创建连接字符串的方法\obj\Debug\005 - 几种创建连接字符串的方法.exe
+C:\Users\mi\Desktop\Programma\SQL\C#\005 - 几种创建连接字符串的方法\obj\Debug\005 - 几种创建连接字符串的方法.pdb
