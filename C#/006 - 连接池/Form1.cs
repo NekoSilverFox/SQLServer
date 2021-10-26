@@ -22,18 +22,35 @@ namespace _006___连接池
         private void btnConnection_Click(object sender, EventArgs e)
         {
             String connStr = "Data Source=DESKTOP-HMF772I\\SQLSERVER;Initial Catalog=CZSchool;Integrated Security=True";
-            SqlConnection conn = new SqlConnection(connStr);
+            SqlConnection conn = null;
 
-            conn.Open();
-            MessageBox.Show("数据库链接已创建");
+            try
+            {
+                conn = new SqlConnection(connStr);
 
-            // 释放连接通道。但其实没有真正的释放这个对象，只是将他的状态关闭，同时将连接字符串清空
-            conn.Dispose();
-            // 如果需要恢复连接重新将连接字符串赋值即可
-            conn.ConnectionString = connStr;
+                conn.Open();
+                MessageBox.Show("数据库链接已创建");
 
-            conn.Close();
-            MessageBox.Show("数据库链接已关闭");
+                // 释放连接通道。但其实没有真正的释放这个对象，只是将他的状态关闭，同时将连接字符串清空
+                conn.Dispose();
+                // 如果需要恢复连接重新将连接字符串赋值即可
+                conn.ConnectionString = connStr;
+
+                conn.Close();
+                MessageBox.Show("数据库链接已关闭");
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+
         }
 
         private void btnPool_Click(object sender, EventArgs e)
