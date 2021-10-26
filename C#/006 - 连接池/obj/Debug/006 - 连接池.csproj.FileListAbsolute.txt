@@ -1,0 +1,10 @@
+C:\Users\mi\Desktop\Programma\SQL\C#\006 - 连接池\obj\Debug\_006___连接池.Form1.resources
+C:\Users\mi\Desktop\Programma\SQL\C#\006 - 连接池\obj\Debug\_006___连接池.Properties.Resources.resources
+C:\Users\mi\Desktop\Programma\SQL\C#\006 - 连接池\obj\Debug\006 - 连接池.csproj.GenerateResource.cache
+C:\Users\mi\Desktop\Programma\SQL\C#\006 - 连接池\obj\Debug\006 - 连接池.csproj.CoreCompileInputs.cache
+C:\Users\mi\Desktop\Programma\SQL\C#\006 - 连接池\bin\Debug\006 - 连接池.exe.config
+C:\Users\mi\Desktop\Programma\SQL\C#\006 - 连接池\bin\Debug\006 - 连接池.exe
+C:\Users\mi\Desktop\Programma\SQL\C#\006 - 连接池\bin\Debug\006 - 连接池.pdb
+C:\Users\mi\Desktop\Programma\SQL\C#\006 - 连接池\obj\Debug\006 - 连接池.exe
+C:\Users\mi\Desktop\Programma\SQL\C#\006 - 连接池\obj\Debug\006 - 连接池.pdb
+C:\Users\mi\Desktop\Programma\SQL\C#\006 - 连接池\obj\Debug\006 - 连接池.csprojAssemblyReference.cache
