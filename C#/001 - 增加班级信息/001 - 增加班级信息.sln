@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "002 - 方法只是用来接
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "003 - 获取标识列", "..\003 - 获取标识列\003 - 获取标识列.csproj", "{FBEE0929-E907-4E7A-91AD-5E58B56E14BC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "004 - 创建读取器对象读取数据", "..\004 - 创建读取器对象读取数据\004 - 创建读取器对象读取数据.csproj", "{F4FC6CAD-CA73-45B9-A780-32C3ED709096}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{FBEE0929-E907-4E7A-91AD-5E58B56E14BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FBEE0929-E907-4E7A-91AD-5E58B56E14BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FBEE0929-E907-4E7A-91AD-5E58B56E14BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4FC6CAD-CA73-45B9-A780-32C3ED709096}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4FC6CAD-CA73-45B9-A780-32C3ED709096}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4FC6CAD-CA73-45B9-A780-32C3ED709096}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4FC6CAD-CA73-45B9-A780-32C3ED709096}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

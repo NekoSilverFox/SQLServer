@@ -1,0 +1,10 @@
+C:\Users\mi\Desktop\Programma\SQL\C#\004 - 创建读取器对象读取数据\bin\Debug\004 - 创建读取器对象读取数据.exe.config
+C:\Users\mi\Desktop\Programma\SQL\C#\004 - 创建读取器对象读取数据\bin\Debug\004 - 创建读取器对象读取数据.exe
+C:\Users\mi\Desktop\Programma\SQL\C#\004 - 创建读取器对象读取数据\bin\Debug\004 - 创建读取器对象读取数据.pdb
+C:\Users\mi\Desktop\Programma\SQL\C#\004 - 创建读取器对象读取数据\obj\Debug\_004___创建读取器对象读取数据.Form1.resources
+C:\Users\mi\Desktop\Programma\SQL\C#\004 - 创建读取器对象读取数据\obj\Debug\_004___创建读取器对象读取数据.Properties.Resources.resources
+C:\Users\mi\Desktop\Programma\SQL\C#\004 - 创建读取器对象读取数据\obj\Debug\004 - 创建读取器对象读取数据.csproj.GenerateResource.cache
+C:\Users\mi\Desktop\Programma\SQL\C#\004 - 创建读取器对象读取数据\obj\Debug\004 - 创建读取器对象读取数据.csproj.CoreCompileInputs.cache
+C:\Users\mi\Desktop\Programma\SQL\C#\004 - 创建读取器对象读取数据\obj\Debug\004 - 创建读取器对象读取数据.exe
+C:\Users\mi\Desktop\Programma\SQL\C#\004 - 创建读取器对象读取数据\obj\Debug\004 - 创建读取器对象读取数据.pdb
+C:\Users\mi\Desktop\Programma\SQL\C#\004 - 创建读取器对象读取数据\obj\Debug\004 - 创建读取器对象读取数据.csprojAssemblyReference.cache
