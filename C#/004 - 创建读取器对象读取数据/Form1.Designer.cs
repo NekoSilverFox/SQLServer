@@ -31,9 +31,9 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.txtClassName = new System.Windows.Forms.TextBox();
             this.lvClasses = new System.Windows.Forms.ListView();
-            this.lable1 = new System.Windows.Forms.Label();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lable1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnUpdate
@@ -68,15 +68,6 @@
             this.lvClasses.View = System.Windows.Forms.View.Details;
             this.lvClasses.SelectedIndexChanged += new System.EventHandler(this.lvVlasses_SelectedIndexChanged);
             // 
-            // lable1
-            // 
-            this.lable1.AutoSize = true;
-            this.lable1.Location = new System.Drawing.Point(239, 539);
-            this.lable1.Name = "lable1";
-            this.lable1.Size = new System.Drawing.Size(29, 12);
-            this.lable1.TabIndex = 3;
-            this.lable1.Text = "名称";
-            // 
             // columnHeader1
             // 
             this.columnHeader1.Text = "班级ID";
@@ -86,6 +77,15 @@
             // 
             this.columnHeader2.Text = "班级名称";
             this.columnHeader2.Width = 195;
+            // 
+            // lable1
+            // 
+            this.lable1.AutoSize = true;
+            this.lable1.Location = new System.Drawing.Point(239, 539);
+            this.lable1.Name = "lable1";
+            this.lable1.Size = new System.Drawing.Size(29, 12);
+            this.lable1.TabIndex = 3;
+            this.lable1.Text = "名称";
             // 
             // Form1
             // 
@@ -98,6 +98,7 @@
             this.Controls.Add(this.btnUpdate);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

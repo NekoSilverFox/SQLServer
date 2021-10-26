@@ -21,7 +21,14 @@ namespace _004___创建读取器对象读取数据
 
         private void lvVlasses_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string connStr = "Data Source=DESKTOP-HMF772I\\SQLSERVER;Initial Catalog=CZSchool;User ID=sa;Password=123";
+
+        }
+
+
+        // 点击空白区域生成的！！！
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            string connStr = "server=DESKTOP-HMF772I\\SQLSERVER;uid=sa;pwd=123;database=CZSchool";
 
             using (SqlConnection conn = new SqlConnection(connStr))
             {
@@ -38,7 +45,7 @@ namespace _004___创建读取器对象读取数据
                 // 循环读取数据
                 // 先判断有没有下一行记录，如果有的话就将读取指针移动到下一行记录。
                 // 而且还将数据读取到读取器对象 private SqlBuffer[] _data; 数组中
-                while(reader.Read())
+                while (reader.Read())
                 {
                     // 先添加主项，再为主项添加子项
                     ListViewItem lv = new ListViewItem(reader[0].ToString());
