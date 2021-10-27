@@ -1325,6 +1325,22 @@ namespace _001___增加班级信息
 
 - 如果是要做**查询**，就是说找到我想得到具体的数据的值（不是符合条件的个数， 不是聚合函数,也不是单个值），那就**使用 SqlCommand 的 ExecuteReader() 方法返回一个 SqlDataReader 对象**，这个对象的 Read() 方法一次可以返回一行的值，这一行的值由 SQL 语句的 select 来决定，select 后面查询的字段越多，那么这个方法得到的值就越多，也就是说返回的这一行的数据就越多！
 
+  **数据库中的NULL和C#的空值不一样！！ 数据库中的NULL读取到C#会被封装成 `DBNull`**，用 IsDBNull可以判断，它是Reader的方法，并且只能用索引判断，所以不好
+
+  ```c#
+  //if (!reader.IsDBNull(3))
+  //{
+  //    // 数据库中的NULL读取到C#会被封装成 DBNull
+  //    int cid = Convert.ToInt32(reader["classid"]);
+  //}
+  if (!(reader["classid"] is DBNull)) // 【重点】建议用这种方式判断空值
+  {
+      int cid = Convert.ToInt32(reader["classid"]);
+  }
+  ```
+
+  
+
   ![image-20211027230456654](README.assets/image-20211027230456654.png)
 
 - 如果对数据做**增加，删除，修改**，那就要调用 **SqlCommand 的 ExecuteNonQuery() 方法**，这个方法可以执行某个操作，同时**返回受影响和行数**。到底什么操作呢？这和你的SQL语句是有关的。SQL语句写了增加，那它就执行增加。如果写了删除，那它就执行删除。如果**不是增加删除和修改就返回-1**

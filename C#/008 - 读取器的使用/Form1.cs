@@ -36,6 +36,16 @@ namespace _008___读取器的使用
                 // .Read()先判断有无下一行记录，有的话就将指针移动到下一行记录，同时将这一行记录的数据读取到 reader 对象的 _data[] 数组，此数组是一个私有数组，通过方法或者索引器进行访问
                 while (reader.Read())
                 {
+                    //if (!reader.IsDBNull(3))
+                    //{
+                    //    // 数据库中的NULL读取到C#会被封装成 DBNull
+                    //    int cid = Convert.ToInt32(reader["classid"]);
+                    //}
+                    if (!(reader["classid"] is DBNull)) // 【重点】建议用这种方式判断空值
+                    {
+                        int cid = Convert.ToInt32(reader["classid"]);
+                    }
+
                     // 先创建主项，再为主项添加子项
                     ListViewItem listViewItem = new ListViewItem(reader["SubjectId"].ToString());
                     listViewItem.SubItems.AddRange(new string[] {
