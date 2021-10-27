@@ -1393,9 +1393,33 @@ while (dataReader.Read())
 
    ![image-20211027192511583](README.assets/image-20211027192511583.png)
 
-9. 
+9. 在增加了这种 ContextMenuStrip（右键菜单） 按一下操作进行绑定到 ListView
 
-   
+   ![image-20211027201635195](README.assets/image-20211027201635195.png)
+
+   选中 ListView 在右侧选择要绑定的菜单
+
+   ![image-20211027201827027](README.assets/image-20211027201827027.png)
+
+   <img src="README.assets/image-20211027201855219.png" alt="image-20211027201855219" style="zoom:80%;" />
+
+10. 对 ListView 进行事件的绑定
+
+    示例：进行点击事件的绑定，选中吗，某一行后，将内容显示在 TextBook中
+
+    1. 选中已经创建的 ListView
+
+    2. 点击闪电标志（事件），选择Click
+
+    3. 双击框框（不是下拉选择）
+
+       ![image-20211027202423173](README.assets/image-20211027202423173.png)
+
+    4. 
+
+11. 
+
+    
 
 
 

@@ -7,3 +7,4 @@ C:\Users\mi\Desktop\Programma\SQL\C#\008 - 读取器的使用\obj\Debug\008 - �
 C:\Users\mi\Desktop\Programma\SQL\C#\008 - 读取器的使用\obj\Debug\008 - 读取器的使用.csproj.CoreCompileInputs.cache
 C:\Users\mi\Desktop\Programma\SQL\C#\008 - 读取器的使用\obj\Debug\008 - 读取器的使用.exe
 C:\Users\mi\Desktop\Programma\SQL\C#\008 - 读取器的使用\obj\Debug\008 - 读取器的使用.pdb
+C:\Users\mi\Desktop\Programma\SQL\C#\008 - 读取器的使用\obj\Debug\008 - 读取器的使用.csprojAssemblyReference.cache

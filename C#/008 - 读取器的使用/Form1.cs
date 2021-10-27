@@ -46,5 +46,55 @@ namespace _008___读取器的使用
                 }
             }
         }
+
+        private void listViewSubject_Click(object sender, EventArgs e)
+        {
+            // 判断有没有选中一行数据
+            if (this.listViewSubject.SelectedItems.Count == 0)
+            {
+                return;
+            }
+
+            // Subitems 项的值会从第0项开始计算，也包含主控件的
+            listViewSubject.Tag = this.listViewSubject.SelectedItems[0].SubItems[0].Text; // listViewSubject 是那个窗体中我们生成的表格
+            txtBoxSubName.Text = this.listViewSubject.SelectedItems[0].SubItems[1].Text;
+            txtBoxSubTime.Text = this.listViewSubject.SelectedItems[0].SubItems[2].Text;
+            txtBoxClassName.Text = this.listViewSubject.SelectedItems[0].SubItems[3].Text;
+        }
+
+        private void 删除ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // 判断有没有选中一行数据
+            if (this.listViewSubject.SelectedItems.Count == 0)
+            {
+                return;
+            }
+
+            // 重点是得到一个 ID 号，Parse是进行类型转换
+            int id = int.Parse(this.listViewSubject.SelectedItems[0].SubItems[0].Text);
+
+            string connStr = "Data Source=DESKTOP-HMF772I\\SQLSERVER;Initial Catalog=CZSchool;Integrated Security=True";
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                conn.Open();
+                string sql = string.Format("DELETE FROM Subject where subjectid='{0}'", id);
+                SqlCommand comm = new SqlCommand(sql, conn);
+                int isSucc = comm.ExecuteNonQuery();
+
+                if (isSucc == 1)
+                {
+                    MessageBox.Show("删除成功");
+
+                    //【重点】 注意，删除后记得刷新一下，两种方法都可以
+                    //this.listViewSubject.Items.Remove(this.listViewSubject.SelectedItems[0]); // Remove 直接删除项
+                    this.listViewSubject.Items.RemoveAt(this.listViewSubject.SelectedItems[0].Index);   // RemoveAt 根据索引值删除
+                }
+                else
+                {
+                    MessageBox.Show("删除失败");
+                }
+            }
+
+        }
     }
 }
