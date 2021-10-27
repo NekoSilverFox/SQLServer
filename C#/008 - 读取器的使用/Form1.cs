@@ -26,7 +26,8 @@ namespace _008___读取器的使用
                 conn.Open();
 
                 // 【重点】不要用 `*` 因为它的效率非常低，而且容易出错
-                string sql = "SELECT SubjectId, SubjectName, ClassHour, ClassId FROM Subject";
+                string sql = "SELECT SubjectId, SubjectName, ClassHour, ClassId FROM Subject;" +
+                    "SELECT SubjectId, SubjectName FROM Subject";
                 SqlCommand comm = new SqlCommand(sql, conn);
 
                 // 创建这个对象，相当于向服务器请求数据，服务器会响应，将数据存储到服务器缓存中。
@@ -43,6 +44,18 @@ namespace _008___读取器的使用
                         reader["ClassId"].ToString()
                     });
                     this.listViewSubject.Items.Add(listViewItem);
+                }
+
+                // 这里在上面又加了一条SELECT语句，所以会返回两个结果集
+                // .NextResult() 判断有没有下一个结果集，如果有就将读取指针移动到下一个结果集
+                if (reader.NextResult())
+                {
+                    while(reader.Read())
+                    {
+                        ListViewItem lv = new ListViewItem(reader[0].ToString());
+                        lv.SubItems.Add(reader[1].ToString());
+                        this.listView2.Items.Add(lv);
+                    }
                 }
             }
         }
