@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "005 - 几种创建连接字
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "006 - 连接池", "..\006 - 连接池\006 - 连接池.csproj", "{EC207542-6C5C-4658-9EEA-D99B07E1605E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "007 - 登录和注册", "..\007 - 登录和注册\007 - 登录和注册.csproj", "{82C690F7-A202-4113-99F6-E5AD1F2419D3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{EC207542-6C5C-4658-9EEA-D99B07E1605E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC207542-6C5C-4658-9EEA-D99B07E1605E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC207542-6C5C-4658-9EEA-D99B07E1605E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82C690F7-A202-4113-99F6-E5AD1F2419D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82C690F7-A202-4113-99F6-E5AD1F2419D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82C690F7-A202-4113-99F6-E5AD1F2419D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82C690F7-A202-4113-99F6-E5AD1F2419D3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

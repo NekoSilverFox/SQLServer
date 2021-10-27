@@ -1276,3 +1276,78 @@ namespace _001___增加班级信息
 
 ![image-20211027000559227](README.assets/image-20211027000559227.png)
 
+![image-20211027001245877](README.assets/image-20211027001245877.png)
+
+### C# 操作数据库流程
+
+1.	我们最终操作的对像是数据表，在操作数据表之前我们先要明确我们要操作的数据库，因为只有先连接了数据库才能进入数据库操作里面存储的表。
+   所以才有以下连接数据库的代码：
+
+   ```sql
+   // 数据库连接字符串
+   string connString = "Data Source=.;Initial Catalog=MySchool;Integrated Security=True";
+   server=.\sqlexpress; database=myschool;User id=sa; Pwd=*****
+   server=.\sqlexpress; database=myschool;Uid=sa; password=*
+   
+   // 数据库连接 Connection 对象,连接通道
+   SqlConnection connection = new SqlConnection(connString);
+   ```
+   
+   数据库连接建立后需要将**连接打开**才能真正实现数据库的连接，否则连接语句仅仅是一个语句而已，不能起到任何作用。所以才需要以下代码：
+   
+   ```sql
+   connection.Open();  // 打开连接
+   ```
+
+2. 当我们成功连接上数据库之后我们需要做什么事情呢？
+   我们知道，操作数据库可以使用SQL语句，SQL语句就是用来做数据库的增加，删除，修改，查询操作的。所以我们需要定义一个SQL语句告诉电脑应该做什么样的事情。所以才有以下语句：如
+
+   ```c#
+   string sql = string.Format("SELECT count(*) FROM Admin WHERE LogInId='{0}' AND LogInPwd='{1}'", loginId, loginPwd );   ExcuteScalar  ExcuteNonQuery()
+   if(num!=0)
+   {
+       ...
+   }
+   ```
+
+3. 当我成功连接上数据库，也写好的 SQL 语句就行了吗？当然不行，因为我们如果不去执行 SQL 语句，那它也仅仅是一个语句而已，就像我们在 SQL SERVER 里面写了 SQL 语句而不是去执行一下不能起到任何作用。所以我们需要一个命令对像来 “执行” SQL 语句，这个命令对像就是 SqlCommand 对像,它是一个系统对像，我们要使用它必须先实例化出一个新的对像，所以才有以下代码：
+
+   ```c#
+   //command是实例化对像的名称，sql是说明需要执行的SQL语句，connection是说明如何连接数据库
+   SqlCommand command = new SqlCommand(sql, connection);
+   command.CommandText = sql;
+   command.Connection = connection;
+   ```
+
+4．有了command对像还不够了，因为他也仅仅是一个对像，要它起作用还需要调用它的相应的方法，就是“对像.方法”。具体方法如下：
+
+- 如果是要做**查询**，就是说找到我想得到具体的数据的值（不是符合条件的个数， 不是聚合函数,也不是单个值），那就**使用 SqlCommand 的 ExecuteReader() 方法返回一个 SqlDataReader 对象**，这个对象的 Read() 方法一次可以返回一行的值，这一行的值由 SQL 语句的 select 来决定，select 后面查询的字段越多，那么这个方法得到的值就越多，也就是说返回的这一行的数据就越多！
+- 如果对数据做**增加，删除，修改**，那就要调用 **SqlCommand 的 ExecuteNonQuery() 方法**，这个方法可以执行某个操作，同时**返回受影响和行数**。到底什么操作呢？这和你的SQL语句是有关的。SQL语句写了增加，那它就执行增加。如果写了删除，那它就执行删除。如果**不是增加删除和修改就返回-1**
+- 如果**只是返回满足条件的个数或者返回第一行第一列的值**，那一般就会**使用 SqlCommand 的ExecuteScalar() 方法**，例如SQL语句里面写了聚合函数等。**它的返回类型是object，需要做强制类型转换**，因为有可能将object转换为其它类型，所以**一般使用Convert进行转换**。（数据库中的所有数据都是值类型，所以读取过来后需要做装箱，在做拆箱只能拆到原始的数据类型）
+
+5. 那么我们如何知道这个操作被成功的执行了呢？这个时候我们需要方法给我们返回相应的值，**ExecuteScalar() 返回单个值，如聚合函数或者单列的一个值，这个值的类型是object，需要做强制的类型转换**，**ExecuteNonQuery() 返回受影响的行数，它们都可以是一个整型值**，所以我们经常看到这样的代码：
+
+```c#
+count = (int)command.ExecuteScalar();  // 执行查询语句
+
+// 但是ExecuteReader()返回多个值，所以我们需要使用循环去做接收，一般是将读取出来的值赋给相应的字符串变量，或者放到相关控件里面做显示，所以我们可能看到这样的代码：
+while (dataReader.Read())
+{
+    //将值赋值给一个变量 
+	gradeName = (string)dataReader[0];
+}
+```
+
+6. 对于 ExecuteScalar() 和ExecuteNonQuery() 接下来我们就可以对方法返回的值做一个判断了，所以经常看到这样的代码：
+
+   ```c#
+   if (result== 1)  @@rowcount
+   {
+   	MessageBox.Show("添加成功！”);
+   }                    
+   else
+   {
+   	MessageBox.Show("添加失败！");
+   }
+   ```
+

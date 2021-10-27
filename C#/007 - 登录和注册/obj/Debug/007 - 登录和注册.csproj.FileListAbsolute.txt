@@ -1,0 +1,10 @@
+C:\Users\mi\Desktop\Programma\SQL\C#\007 - 登录和注册\obj\Debug\_007___登录和注册.FormSignUp.resources
+C:\Users\mi\Desktop\Programma\SQL\C#\007 - 登录和注册\obj\Debug\_007___登录和注册.FormSignIn.resources
+C:\Users\mi\Desktop\Programma\SQL\C#\007 - 登录和注册\obj\Debug\_007___登录和注册.Properties.Resources.resources
+C:\Users\mi\Desktop\Programma\SQL\C#\007 - 登录和注册\obj\Debug\007 - 登录和注册.csproj.GenerateResource.cache
+C:\Users\mi\Desktop\Programma\SQL\C#\007 - 登录和注册\obj\Debug\007 - 登录和注册.csproj.CoreCompileInputs.cache
+C:\Users\mi\Desktop\Programma\SQL\C#\007 - 登录和注册\bin\Debug\007 - 登录和注册.exe.config
+C:\Users\mi\Desktop\Programma\SQL\C#\007 - 登录和注册\bin\Debug\007 - 登录和注册.exe
+C:\Users\mi\Desktop\Programma\SQL\C#\007 - 登录和注册\bin\Debug\007 - 登录和注册.pdb
+C:\Users\mi\Desktop\Programma\SQL\C#\007 - 登录和注册\obj\Debug\007 - 登录和注册.exe
+C:\Users\mi\Desktop\Programma\SQL\C#\007 - 登录和注册\obj\Debug\007 - 登录和注册.pdb
