@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "006 - 连接池", "..\006 -
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "007 - 登录和注册", "..\007 - 登录和注册\007 - 登录和注册.csproj", "{82C690F7-A202-4113-99F6-E5AD1F2419D3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "008 - 读取器的使用", "..\008 - 读取器的使用\008 - 读取器的使用.csproj", "{A3F3187E-B0B5-4102-8EB2-20BFCE17D8EC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{82C690F7-A202-4113-99F6-E5AD1F2419D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{82C690F7-A202-4113-99F6-E5AD1F2419D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{82C690F7-A202-4113-99F6-E5AD1F2419D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3F3187E-B0B5-4102-8EB2-20BFCE17D8EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3F3187E-B0B5-4102-8EB2-20BFCE17D8EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3F3187E-B0B5-4102-8EB2-20BFCE17D8EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3F3187E-B0B5-4102-8EB2-20BFCE17D8EC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

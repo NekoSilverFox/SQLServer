@@ -1351,3 +1351,51 @@ while (dataReader.Read())
    }
    ```
 
+### 读取器 + 视图（C# ListView）的使用
+
+1. 在 C# 中添加一个 ListView
+
+   ![image-20211027191544234](README.assets/image-20211027191544234.png)
+
+2. 在这个  ListView 的属性中设置（配置）
+
+3. 增加行
+
+   ![image-20211027191652310](README.assets/image-20211027191652310.png)
+
+4. 在 View 中设置为 Details 可以在 ListView 中显示具体的行名称
+
+   ![image-20211027191758176](README.assets/image-20211027191758176.png)
+
+   ![image-20211027191814682](README.assets/image-20211027191814682.png)
+
+5. FullRowSelect 可以检查选择
+
+   ![image-20211027192134810](README.assets/image-20211027192134810.png)
+
+6. MultiSelect 为是否只能选择一行
+
+   - 设置为 False 表示可以选择多行
+
+   ![image-20211027192158408](README.assets/image-20211027192158408.png)
+
+7. GridLine 是网格线
+
+   打开以后可以使表好看一些
+
+   ![image-20211027192346786](README.assets/image-20211027192346786.png)
+
+   ![image-20211027192407011](README.assets/image-20211027192407011.png)
+
+8. 点击**窗体空白处**配置 ListView 要加载的数据
+
+   **【重点】注意是窗体空白处，而不是点那个视图！！！！**
+
+   ![image-20211027192511583](README.assets/image-20211027192511583.png)
+
+9. 
+
+   
+
+
+
