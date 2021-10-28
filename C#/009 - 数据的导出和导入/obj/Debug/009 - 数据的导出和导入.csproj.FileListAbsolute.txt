@@ -1,0 +1,10 @@
+C:\Users\mi\Desktop\Programma\SQL\C#\009 - 数据的导出和导入\bin\Debug\009 - 数据的导出和导入.exe.config
+C:\Users\mi\Desktop\Programma\SQL\C#\009 - 数据的导出和导入\bin\Debug\009 - 数据的导出和导入.exe
+C:\Users\mi\Desktop\Programma\SQL\C#\009 - 数据的导出和导入\bin\Debug\009 - 数据的导出和导入.pdb
+C:\Users\mi\Desktop\Programma\SQL\C#\009 - 数据的导出和导入\obj\Debug\009 - 数据的导出和导入.csprojAssemblyReference.cache
+C:\Users\mi\Desktop\Programma\SQL\C#\009 - 数据的导出和导入\obj\Debug\_009___数据的导出和导入.Form1.resources
+C:\Users\mi\Desktop\Programma\SQL\C#\009 - 数据的导出和导入\obj\Debug\_009___数据的导出和导入.Properties.Resources.resources
+C:\Users\mi\Desktop\Programma\SQL\C#\009 - 数据的导出和导入\obj\Debug\009 - 数据的导出和导入.csproj.GenerateResource.cache
+C:\Users\mi\Desktop\Programma\SQL\C#\009 - 数据的导出和导入\obj\Debug\009 - 数据的导出和导入.csproj.CoreCompileInputs.cache
+C:\Users\mi\Desktop\Programma\SQL\C#\009 - 数据的导出和导入\obj\Debug\009 - 数据的导出和导入.exe
+C:\Users\mi\Desktop\Programma\SQL\C#\009 - 数据的导出和导入\obj\Debug\009 - 数据的导出和导入.pdb
