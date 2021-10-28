@@ -1446,11 +1446,62 @@ while (dataReader.Read())
 
        ![image-20211027202423173](README.assets/image-20211027202423173.png)
 
-    4. 
-
-11. 
-
     
+
+### 参数化查询
+
+![image-20211028141301677](README.assets/image-20211028141301677.png)
+
+![image-20211028141305310](README.assets/image-20211028141305310.png)
+
+参数化查询的作用：**防止 SQL 注入**
+
+```sql
+-- 参数化查询：
+-- 【DECLARE】关键字声明变量
+-- 【重点】变量名称前面加 `@`符号！！！
+DECLARE @name nvarchar(50)='fox'
+print @name		-- 输出：fox
+
+-- 使用示例：
+SELECT COUNT(*) FROM [User] where UserName=@name and Pwd=@password
+```
+
+登录使用参数化查询示例：
+
+```c#
+private void btnSignIn_Click(object sender, EventArgs e)
+{
+    string connStr = "Data Source=DESKTOP-HMF772I\\SQLSERVER;Initial Catalog=CZSchool;Integrated Security=True";
+
+    using (SqlConnection conn = new SqlConnection(connStr))
+    {
+        conn.Open();
+
+        // 1. 定义参数占位 `@`参数相当于在 SQL 中创建的一个变量，所以也不需要使用 `'单引号'` 包含
+        string sql = "Select count(*) from [user] where username=@UserName and pass=@Password";
+        
+        // 2. 在 C# 中创建对应的参数对象，参数名称不区分大小写
+        SqlParameter username = new SqlParameter("@UserName", txtClassLogin.Text.Trim());
+        SqlParameter password = new SqlParameter("@Password", txtClassPwd.Text.Trim());
+        
+        // 3. 将创建好的参数传递给服务器让其使用。所以让 command 对象将参数一起传递进去
+        SqlCommand comm = new SqlCommand(sql, conn);
+        comm.Parameters.Add(username);
+        comm.Parameters.Add(password);
+
+        int isSucc = (int)comm.ExecuteScalar();
+        if (isSucc > 0)
+        {
+            MessageBox.Show("登陆成功");
+        }
+        else
+        {
+            MessageBox.Show("登陆失败");
+        }
+    }
+}
+```
 
 
 
