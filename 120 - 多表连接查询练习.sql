@@ -207,22 +207,109 @@ SELECT *
 			FROM Balls 
 			WHERE tb_Stu.NumSt=Balls.NumSt)
 
---	4.3. Выберите группы, в которых есть студенты, сдавшие 【все】 экзамены 1 семестра
--- 从 Uplans 中找第1学期的科目
-SELECT * FROM Uplans WHERE Semestr=1
-SELECT Uplans.IdDisc FROM Uplans WHERE Semestr=1
+--	4.3. Выберите группы, в которых 【есть】 студенты, сдавшие 【все】 экзамены 1 семестра
+-- 输出第一学期需要考试的科目ID和他们的专业号
+-- SELECT *
+SELECT Uplans.IdDisc, Uplans.NumDir, Uplans.NumDisc
+	FROM Uplans
+	WHERE Uplans.Semestr=1
+
+-- ★ 输出每个专业第一学期需要多少个考试 
+SELECT Uplans.NumDir, COUNT(Uplans.NumDir) AS numExamInFirstSem
+	FROM Uplans
+	WHERE Uplans.Semestr=1
+	GROUP BY Uplans.NumDir
 
 
--- 从 Balls 中找参加了第一学期考试的学生
-SELECT * FROM Balls AS tb_B
-	WHERE EXISTS (SELECT Uplans.IdDisc FROM Uplans WHERE Semestr=1 AND tb_B.IdDisc=Uplans.IdDisc) 
+-- 从 Balls 中取出参加了第一学期考试的学生INFO
+SELECT DISTINCT Students.NumSt, Students.FIO, Groups.NumDir,Balls.IdDisc
+	FROM Balls, Groups, Students,
+	(
+		SELECT Uplans.IdDisc, Uplans.NumDir, Uplans.NumDisc
+		FROM Uplans
+		WHERE Uplans.Semestr=1
+	) AS exam1Sem
+	WHERE Balls.NumSt=Students.NumSt
+		AND Balls.IdDisc=exam1Sem.IdDisc
+		AND exam1Sem.NumDir=Groups.NumDir
 
--- 参加了所有考试学生的 NumSt
---SELECT * 
---	FROM Balls,
---		(SELECT * FROM Balls AS tb_B WHERE EXISTS (SELECT Uplans.IdDisc FROM Uplans WHERE Semestr=1 AND tb_B.IdDisc=Uplans.IdDisc)) AS tmp_B
---	WHERE 
+-- ★ 从上面的学生中输出每个考了几次试
+SELECT P1.NumSt, P1.NumDir, COUNT(P1.NumSt) AS numPassExamInFirstSem
+	FROM 
+	(
+		SELECT DISTINCT Students.NumSt, Students.FIO, Groups.NumDir,Balls.IdDisc
+		FROM Balls, Groups, Students,
+		(
+			SELECT Uplans.IdDisc, Uplans.NumDir, Uplans.NumDisc
+			FROM Uplans
+			WHERE Uplans.Semestr=1
+		) AS exam1Sem
+		WHERE Balls.NumSt=Students.NumSt
+			AND Balls.IdDisc=exam1Sem.IdDisc
+			AND exam1Sem.NumDir=Groups.NumDir
+	) AS P1
+	GROUP BY P1.NumSt, P1.NumDir
 		
+-- 得到符合要求的班级
+SELECT Distinct P3.NumGr --, P3.NumSt
+	FROM
+	(
+		SELECT Uplans.NumDir, COUNT(Uplans.NumDir) AS numExamInFirstSem
+			FROM Uplans
+			WHERE Uplans.Semestr=1
+			GROUP BY Uplans.NumDir
+	) AS P2,
+	(
+		SELECT P1.NumSt, P1.NumDir, P1.NumGr, COUNT(P1.NumSt) AS numPassExamInFirstSem
+		FROM 
+		(
+			SELECT DISTINCT Students.NumSt, Students.FIO, Groups.NumGr, Groups.NumDir,Balls.IdDisc
+			FROM Balls, Groups, Students,
+			(
+				SELECT Uplans.IdDisc, Uplans.NumDir, Uplans.NumDisc
+				FROM Uplans
+				WHERE Uplans.Semestr=1
+			) AS exam1Sem
+			WHERE Balls.NumSt=Students.NumSt
+				AND Balls.IdDisc=exam1Sem.IdDisc
+				AND exam1Sem.NumDir=Groups.NumDir
+		) AS P1
+		GROUP BY P1.NumSt, P1.NumDir, P1.NumGr
+	) AS P3
+	WHERE P2.numExamInFirstSem=P3.numPassExamInFirstSem AND P2.NumDir=P3.NumDir
+
+-- 用复合题目要求的方式输出
+SELECT *
+	FROM Groups
+	WHERE EXISTS
+	(
+		SELECT Distinct P3.NumGr --, P3.NumSt
+			FROM
+			(
+				SELECT Uplans.NumDir, COUNT(Uplans.NumDir) AS numExamInFirstSem
+					FROM Uplans
+					WHERE Uplans.Semestr=1
+					GROUP BY Uplans.NumDir
+			) AS P2,
+			(
+				SELECT P1.NumSt, P1.NumDir, P1.NumGr, COUNT(P1.NumSt) AS numPassExamInFirstSem
+				FROM 
+				(
+					SELECT DISTINCT Students.NumSt, Students.FIO, Groups.NumGr, Groups.NumDir,Balls.IdDisc
+					FROM Balls, Groups, Students,
+					(
+						SELECT Uplans.IdDisc, Uplans.NumDir, Uplans.NumDisc
+						FROM Uplans
+						WHERE Uplans.Semestr=1
+					) AS exam1Sem
+					WHERE Balls.NumSt=Students.NumSt
+						AND Balls.IdDisc=exam1Sem.IdDisc
+						AND exam1Sem.NumDir=Groups.NumDir
+				) AS P1
+				GROUP BY P1.NumSt, P1.NumDir, P1.NumGr
+			) AS P3
+			WHERE P2.numExamInFirstSem=P3.numPassExamInFirstSem AND P2.NumDir=P3.NumDir AND (Groups.NumGr=P3.NumGr)
+	)
 
 --	4.4. Выберите группы, в которых есть студенты, которые 【не】 сдали 【ни одной】 дисциплины
 SELECT Distinct NumGr FROM Students
@@ -417,6 +504,165 @@ SELECT DISTINCT P4.NumGr
 	) AS P5
 	WHERE P4.ballStuNumInEveryClass=P5.stuNumInEveryClass
 
+-- 使用 EXISTS 优化
+SELECT * FROM Groups
+	WHERE EXISTS
+	(
+	SELECT DISTINCT P4.NumGr
+		FROM
+		(
+			SELECT NumGr, COUNT(NumGr) AS ballStuNumInEveryClass
+				FROM 
+				(
+					SELECT NumDir, COUNT(NumDir) AS dirBallTimes FROM Uplans WHERE Semestr='1' GROUP BY NumDir
+				) AS P1,
+				(
+					SELECT Balls.NumSt, Students.NumGr, firstSem.NumDir, COUNT(Balls.NumSt) AS stuBallTimes
+						FROM Balls,
+							Students,
+							(SELECT * FROM Uplans WHERE Semestr='1') AS firstSem
+						WHERE firstSem.IdDisc=Balls.IdDisc AND Balls.NumSt=Students.NumSt
+						GROUP BY Balls.NumSt,Students.NumGr ,firstSem.NumDir
+				) AS P2
+				WHERE P1.dirBallTimes=P2.stuBallTimes AND P1.NumDir=P2.NumDir
+				GROUP BY NumGr
+		) AS P4,
+		(
+			SELECT Students.NumGr, COUNT(Students.NumGr) AS stuNumInEveryClass
+				FROM Students
+				GROUP BY Students.NumGr
+		) AS P5
+		WHERE P4.ballStuNumInEveryClass=P5.stuNumInEveryClass AND Groups.NumGr=P4.NumGr
+	)
 
---	4.9. Выбрать студентов, которые сдали все экзамены на хорошо и отлично.
+
+--	4.9. Выбрать студентов, которые сдали 【все】 экзамены на хорошо и отлично.
+-- 找到 4 分和 5 分的学生，并和他们的名字和方向关联起来
+SELECT DISTINCT Students.NumSt, Students.FIO, Balls.IdDisc, Groups.NumGr, Groups.NumDir
+	FROM Balls
+		INNER JOIN Students
+			ON Balls.NumSt=Students.NumSt
+		INNER JOIN Groups
+			ON Groups.NumGr=Students.NumGr
+	WHERE Balls.Ball=4 OR Balls.Ball=5
+
+-- ★ 按照上面的学生分组，并统计他们交了的考试数量
+SELECT DISTINCT Students.NumSt, COUNT(Students.NumSt) AS numPassExamWith4or5, Groups.NumDir
+	FROM Balls
+		INNER JOIN Students
+			ON Balls.NumSt=Students.NumSt
+		INNER JOIN Groups
+			ON Groups.NumGr=Students.NumGr
+	WHERE Balls.Ball=4 OR Balls.Ball=5
+	GROUP BY Students.NumSt, Groups.NumDir
+
+-- ★★ 统计每个专业需要交多少考试
+SELECT Uplans.NumDir, COUNT(Uplans.NumDir) numExamInEveryDir
+	FROM Uplans
+	GROUP BY Uplans.NumDir
+
+-- 找到全交了的，学生 ID
+-- SELECT *
+SELECT P1.NumSt
+	FROM
+	(
+		SELECT DISTINCT Students.NumSt, COUNT(Students.NumSt) AS numPassExamWith4or5, Groups.NumDir
+			FROM Balls
+				INNER JOIN Students
+					ON Balls.NumSt=Students.NumSt
+				INNER JOIN Groups
+					ON Groups.NumGr=Students.NumGr
+			WHERE Balls.Ball=4 OR Balls.Ball=5
+			GROUP BY Students.NumSt, Groups.NumDir
+	)  AS P1,
+	(
+		SELECT Uplans.NumDir, COUNT(Uplans.NumDir) numExamInEveryDir
+		FROM Uplans
+		GROUP BY Uplans.NumDir
+	) AS P2
+	WHERE P2.numExamInEveryDir=P1.numPassExamWith4or5
+
+-- ★★★ 输出学生信息
+SELECT *
+	FROM Students
+	WHERE EXISTS
+	(
+		SELECT P1.NumSt
+		FROM
+		(
+			SELECT DISTINCT Students.NumSt, COUNT(Students.NumSt) AS numPassExamWith4or5, Groups.NumDir
+				FROM Balls
+					INNER JOIN Students
+						ON Balls.NumSt=Students.NumSt
+					INNER JOIN Groups
+						ON Groups.NumGr=Students.NumGr
+				WHERE Balls.Ball=4 OR Balls.Ball=5
+				GROUP BY Students.NumSt, Groups.NumDir
+		)  AS P1,
+		(
+			SELECT Uplans.NumDir, COUNT(Uplans.NumDir) numExamInEveryDir
+			FROM Uplans
+			GROUP BY Uplans.NumDir
+		) AS P2
+		WHERE P2.numExamInEveryDir=P1.numPassExamWith4or5 AND Students.NumSt=P1.NumSt
+	)
+
 --	4.10. Выбрать студентов, которые сдали наибольшее количество экзаменов
+-- 先统计每个学生交了多少次考试
+SELECT NumSt, COUNT(NumSt) AS numExam
+	FROM Balls
+	GROUP BY NumSt
+
+-- 输出交了最多考试的次数
+SELECT MAX(P1.numExam) AS maxExamTimes
+	FROM 
+	(
+		SELECT NumSt, COUNT(NumSt) AS numExam
+			FROM Balls
+			GROUP BY NumSt
+	) AS P1
+
+
+-- 输出交了最多考试的那位神仙的ID
+--SELECT *
+SELECT P1.NumSt
+	FROM
+	(
+		SELECT NumSt, COUNT(NumSt) AS numExam
+		FROM Balls
+		GROUP BY NumSt
+	) AS P1,
+	(
+		SELECT MAX(P1.numExam) AS maxExamTimes
+		FROM 
+		(
+			SELECT NumSt, COUNT(NumSt) AS numExam
+				FROM Balls
+				GROUP BY NumSt
+		) AS P1
+	) AS P2
+	WHERE P1.numExam=P2.maxExamTimes
+	
+-- 最终输出
+SELECT *
+	FROM Students
+	WHERE EXISTS
+	(
+		SELECT P1.NumSt
+		FROM
+		(
+			SELECT NumSt, COUNT(NumSt) AS numExam
+			FROM Balls
+			GROUP BY NumSt
+		) AS P1,
+		(
+			SELECT MAX(P1.numExam) AS maxExamTimes
+			FROM 
+			(
+				SELECT NumSt, COUNT(NumSt) AS numExam
+					FROM Balls
+					GROUP BY NumSt
+			) AS P1
+		) AS P2
+		WHERE P1.numExam=P2.maxExamTimes AND (Students.NumSt=P1.NumSt)
+	)
