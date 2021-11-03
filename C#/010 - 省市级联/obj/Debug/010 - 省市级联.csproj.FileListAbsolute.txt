@@ -1,0 +1,10 @@
+C:\Users\mi\Desktop\Programma\SQL\C#\010 - 省市级联\bin\Debug\010 - 省市级联.exe.config
+C:\Users\mi\Desktop\Programma\SQL\C#\010 - 省市级联\bin\Debug\010 - 省市级联.exe
+C:\Users\mi\Desktop\Programma\SQL\C#\010 - 省市级联\bin\Debug\010 - 省市级联.pdb
+C:\Users\mi\Desktop\Programma\SQL\C#\010 - 省市级联\obj\Debug\010 - 省市级联.csprojAssemblyReference.cache
+C:\Users\mi\Desktop\Programma\SQL\C#\010 - 省市级联\obj\Debug\_010___省市级联.Form1.resources
+C:\Users\mi\Desktop\Programma\SQL\C#\010 - 省市级联\obj\Debug\_010___省市级联.Properties.Resources.resources
+C:\Users\mi\Desktop\Programma\SQL\C#\010 - 省市级联\obj\Debug\010 - 省市级联.csproj.GenerateResource.cache
+C:\Users\mi\Desktop\Programma\SQL\C#\010 - 省市级联\obj\Debug\010 - 省市级联.csproj.CoreCompileInputs.cache
+C:\Users\mi\Desktop\Programma\SQL\C#\010 - 省市级联\obj\Debug\010 - 省市级联.exe
+C:\Users\mi\Desktop\Programma\SQL\C#\010 - 省市级联\obj\Debug\010 - 省市级联.pdb

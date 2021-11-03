@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "008 - 读取器的使用", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "009 - 数据的导出和导入", "..\009 - 数据的导出和导入\009 - 数据的导出和导入.csproj", "{DCBC2EEF-15B8-4433-A81F-427C110834BA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "010 - 省市级联", "..\010 - 省市级联\010 - 省市级联.csproj", "{93CF7384-6531-4629-8A59-051604553714}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{DCBC2EEF-15B8-4433-A81F-427C110834BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DCBC2EEF-15B8-4433-A81F-427C110834BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DCBC2EEF-15B8-4433-A81F-427C110834BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93CF7384-6531-4629-8A59-051604553714}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93CF7384-6531-4629-8A59-051604553714}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93CF7384-6531-4629-8A59-051604553714}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93CF7384-6531-4629-8A59-051604553714}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

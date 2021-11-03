@@ -1503,5 +1503,13 @@ private void btnSignIn_Click(object sender, EventArgs e)
 }
 ```
 
+### 下拉列表
 
+![image-20211103184335130](README.assets/image-20211103184335130.png)
+
+- 设置只读，不能修改
+
+  ![image-20211103184412085](README.assets/image-20211103184412085.png)
+
+- 
 
