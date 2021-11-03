@@ -32,14 +32,24 @@ namespace _007___登录和注册
                 conn.Open();
 
                 //【重点】这里的 `user`一定要加一个打括号，因为会和SQL中的关键字冲突
-                string sql = string.Format("Insert into [user] values('{0}','{1}','{2}','{3}')",
-                    txtClassLogin.Text.Trim(),
-                    txtClassPwd.Text.Trim(),
-                    txtClassEmail.Text.Trim(),
-                    txtClassTel.Text.Trim()
-                    );
+                string sql = string.Format("Insert into [user] values(@username,@pass,@email,@phone)");
+                SqlParameter[] ps =
+                {
+                    new SqlParameter("@username", txtClassLogin.Text.Trim()),
+                    new SqlParameter("@pass", txtClassPwd.Text.Trim()),
+                    new SqlParameter("@email", string.IsNullOrEmpty(txtClassEmail.Text.Trim())? DBNull.Value : (object)txtClassEmail.Text.Trim()),
+                    new SqlParameter("@phone", string.IsNullOrEmpty(txtClassTel.Text.Trim())? DBNull.Value : (object)txtClassTel.Text.Trim()),
+                };
+
+                //string sql = string.Format("Insert into [user] values('{0}','{1}','{2}','{3}')",
+                //    txtClassLogin.Text.Trim(),
+                //    txtClassPwd.Text.Trim(),
+                //    txtClassEmail.Text.Trim(),
+                //    txtClassTel.Text.Trim()
+                //    );
 
                 SqlCommand comm = new SqlCommand(sql, conn);
+                comm.Parameters.AddRange(ps);
 
                 // 方法的作用不在于可以执行的哪一种命令，而在于只能接受从服务器返回的某种类型的值
                 int num = comm.ExecuteNonQuery();
