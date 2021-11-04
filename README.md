@@ -688,6 +688,8 @@ SELECT StudentNo, StudentName,
 
 ​		![image-20211104164729028](README.assets/image-20211104164729028.png)
 
+### 局部变量
+
 
 
 ## CONVERT 类型转换函数
