@@ -18,5 +18,3 @@ SELECT Student.StudentName, Student.BornDate, GRADE.classname
 	ON grade.ClassId=Student.ClassId
 
 
-USE CZSchool
-SELECT * FROM PHONE

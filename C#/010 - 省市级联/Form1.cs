@@ -48,7 +48,8 @@ namespace _010___省市级联
                 SqlDataReader reader = comm.ExecuteReader();
                 while (reader.Read())
                 {
-                    cbo.Items.Add(reader["aname"]);
+                    // cbo.Items.Add(reader["aname"]);
+
                 }
             }
         }

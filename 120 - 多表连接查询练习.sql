@@ -114,9 +114,13 @@ SELECT Groups.NumGr, COUNT(*) AS NumStudentsNow, Groups.Quantity
 	HAVING COUNT(*)<Groups.Quantity
 	ORDER BY Groups.NumGr		-- 这句可以没有，排序而已
 
+
+
+
 --	3.6. Выберите номера групп, в которых есть студенты, сдавшие больше одного экзамена,
 -- добавив к ним номера групп, в которых есть студенты, которые ничего не сдали. 
--- 输出了应该到的每个学生，而不是只是班级数
+
+-- ★ 输出了应该到的每个学生，而不是只是班级数
 SELECT Students.NumGr, Students.NumSt, COUNT(*) AS 'Количество экз', 'это студент, сдавшие больше одного экзамена' AS 'Info'
 	FROM Students
 	RIGHT JOIN Balls
@@ -133,7 +137,7 @@ SELECT Students.NumGr, Students.NumSt, 0 AS 'Количество экз', 'эт
 	ORDER BY 'Info'
 
 
-
+-- ★ 
 SELECT Students.NumGr, 'есть студенты, сдавшие больше одного экзамена' AS 'номера групп, в которых'
 	FROM Students
 	RIGHT JOIN Balls
@@ -590,6 +594,7 @@ SELECT P1.NumSt
 	) AS P2
 	WHERE P2.numExamInEveryDir=P1.numPassExamWith4or5
 
+
 -- ★★★ 输出学生信息
 SELECT *
 	FROM Students
@@ -674,3 +679,24 @@ SELECT *
 		) AS P2
 		WHERE P1.numExam=P2.maxExamTimes AND (Students.NumSt=P1.NumSt)
 	)
+
+
+SELECT Students.FIO, Students.NumGr, Disciplines.[Name], Balls.Ball
+	FROM Balls
+	INNER JOIN Uplans
+		ON Balls.IdDisc=Uplans.IdDisc
+	INNER JOIN Disciplines
+		ON Disciplines.NumDisc=Uplans.NumDisc
+	INNER JOIN Students
+		ON Students.NumSt=Balls.NumSt
+	WHERE Balls.Ball>4
+UNION
+SELECT Students.FIO, Students.NumGr, Disciplines.[Name], Balls.Ball
+	FROM Balls
+	INNER JOIN Uplans
+		ON Balls.IdDisc=Uplans.IdDisc
+	INNER JOIN Disciplines
+		ON Disciplines.NumDisc=Uplans.NumDisc
+	INNER JOIN Students
+		ON Students.NumSt=Balls.NumSt
+	WHERE Balls.Ball<4

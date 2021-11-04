@@ -584,6 +584,10 @@ select top 2 ClassId, sex, COUNT(*) as cnt from student where email is not null 
 
 ## SELECT  子查询
 
+![image-20211104173223219](README.assets/image-20211104173223219.png)
+
+
+
 ### SELECT  独立子查询
 
 ```SQL
@@ -676,7 +680,13 @@ SELECT StudentNo, StudentName,
 
 ```
 
+### 逻辑变量
 
+![image-20211104155927672](README.assets/image-20211104155927672.png)
+
+![image-20211104155955585](README.assets/image-20211104155955585.png)
+
+​		![image-20211104164729028](README.assets/image-20211104164729028.png)
 
 
 
@@ -847,7 +857,91 @@ select DATENAME(WEEKDAY, GETDATE())	-- 今天是星期几
 select DATEPART(yyyy, GETDATE())
 ```
 
+## 视图
 
+![image-20211104180201394](README.assets/image-20211104180201394.png)
+
+​		![image-20211104205709401](README.assets/image-20211104205709401.png)
+
+创建：
+
+```sql
+-- 使用代码创建视图：
+CREATE VIEW vw_视图名称
+AS
+	你需要查询的命令
+GO
+```
+
+
+
+使用视图的注意事项：
+
+- 【重点】视图中不能使用 ORDER BY ，除非使用了 TOP，可以用 TOP 100 Percent 取全部结果，但是排序会失效
+- 【重点】视图中只能创建一个 select 查询
+- 【重点】不能在视图创建中使用 UPDATE DELETE 和 INSERT
+- 对视图【一般】不会去执行删除和修改操作，但是一定要注意的是：
+  - 对视图的这些操作会影响到原始的物理表
+  - 如果对视图做增删改，确保这些操作仅仅是对一个表的，如果涉及到多表连接的视图，会失败
+
+```sql
+-- 视图
+-- 视图就是一张虚拟表，根据用户的查询创建的命令。使用视图就像使用表一样！
+select * from 视图
+
+-- 使用代码创建视图：
+CREATE VIEW vw_视图名称
+AS
+	你需要查询的命令
+GO
+
+use CZSchool
+if exists(select * from sysobjects where name='vw_getStudentBySex')
+	drop view vw_getStudentBySex
+go
+create view vw_getStudentBySex	-- 这个创建语句必须是批处理语句的第一句（GO 后的第一句）
+as
+	select * from Student where sex='男'
+	-- select * from Student order by StudentNo	【重点】视图中不能使用 ORDER BY ，除非使用了 TOP，可以用 TOP 100 Percent 取全部结果，但是排序会失效
+	-- select * from grade	【重点】视图中只能创建一个 select 查询
+	-- update grade			【重点】不能在视图创建中使用 UPDATE DELETE 和 INSERT
+go
+
+
+-- 使用视图
+-- 对视图【一般】不会去执行删除和修改操作，但是一定要注意的是：
+--	对视图的这些操作会影响到原始的物理表
+--	如果对视图做增删改，确保这些操作仅仅是对一个表的，如果涉及到多表连接的视图，会失败
+select * from vw_getStudentBySex
+update vw_getStudentBySex set phone='123456789' where StudentNo=1 -- OK
+
+select * from vw_getinfo
+update vw_getinfo set phone='97685', classid=2 where StudentNo=1 -- ERROR
+```
+
+
+
+## 事物
+
+![image-20211104164931986](README.assets/image-20211104164931986.png)
+
+## 存储过程
+
+![image-20211104164957124](README.assets/image-20211104164957124.png)
+
+## 触发器
+
+![image-20211104165135745](README.assets/image-20211104165135745.png)
+
+
+
+## 索引
+
+![image-20211104165150548](README.assets/image-20211104165150548.png)
+
+## 临时表
+
+![image-20211104165212775](README.assets/image-20211104165212775.png)
 
 ## Transact-SQL 修改
 
