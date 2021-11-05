@@ -77,3 +77,8 @@ declare @examTime datetime						-- 最近一次考试时间
 set @subjectID=(select SubjectId from Subject where SubjectName=@subjectName)	-- 获取科目ID
 select @examTime=max(ExamDate) from Result where SubjectId=@subjectID			-- 获取最近一次考试日期
 select MAX(StudentResult), MIN(StudentResult) from Result where SubjectId=@subjectID and ExamDate=@examTime
+
+
+
+
+
