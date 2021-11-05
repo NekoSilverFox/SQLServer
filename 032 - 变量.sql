@@ -64,3 +64,16 @@ GO
 declare @name nvarchar(10)='aaaaaaa'
 select @name=StudentName from Student where StudentNo=100
 print @name		-- 默认值 aaaaaaa
+
+
+
+
+
+go
+-- 查询最近一次 office 考试成绩的最高分和最低分
+declare @subjectName nvarchar(50)='office'		-- 科目名称
+declare @subjectID int							-- 科目ID
+declare @examTime datetime						-- 最近一次考试时间
+set @subjectID=(select SubjectId from Subject where SubjectName=@subjectName)	-- 获取科目ID
+select @examTime=max(ExamDate) from Result where SubjectId=@subjectID			-- 获取最近一次考试日期
+select MAX(StudentResult), MIN(StudentResult) from Result where SubjectId=@subjectID and ExamDate=@examTime
