@@ -1211,6 +1211,10 @@ BEGIN transaction
 
 ![image-20211104164957124](README.assets/image-20211104164957124.png)
 
+![image-20211105134450658](README.assets/image-20211105134450658.png)
+
+ 
+
 ## 触发器
 
 ![image-20211104165135745](README.assets/image-20211104165135745.png)
