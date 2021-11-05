@@ -108,3 +108,31 @@ EXEC usp_getAllStuInfoBySex @className='二期班'	-- 用指定参数的方式调用
 -- 但是这种方法有个缺点，如果使用多个参数，后续的都要指定参数名！！
 EXEC usp_getAllStuInfoBySex @className='二期班', '女'  ERROR 必须传递参数 2，并以 '@name = value' 的形式传递后续的参数。一旦使用了 '@name = value' 形式之后，所有后续的参数就必须以 '@name = value' 的形式传递。
 EXEC usp_getAllStuInfoBySex @className='二期班', @sex='女'
+go
+
+
+
+-- 【output】带【输出参数】的存储过程
+-- 创建一个存储过程，输入班级和性别，输出班级总人数和该性别的人数
+if exists (select * from sysobjects where name='usp_getStuNumBySex')
+	DROP proc usp_getStuNumBySex
+go
+create proc usp_getStuNumBySex
+	@totalNum int output,	-- 如果一个参数使用了output修饰，那么说明：他是一个输出参数。说明了你会向服务器请求返回这个参数的值。而且服务器也知道了标识了output的参数再以后需要返回
+	@sexNum int output,		-- 指定了某一性别的总人数
+	@classname varchar(50),	-- 输入参数
+	@sex char(2)='男'		-- 最好把带有默认参数的放在最后
+as
+	declare @classid int=(select classid from grade where classname=@classname)
+	select * from Student where ClassId=@classid and Sex=@sex
+	set @totalNum=(select count(*) from Student)
+	set @sexNum=(select Count(*) from Student where ClassId=@classid and Sex=@sex)
+go
+
+-- 使用带有输出参数的：
+-- 服务器向用户返回值，用户就要创建相应的变量做接受
+-- 表明了 output 说明了你会向服务器请求返回这个参数的值。而服务器也知道了标识了 output 的参数在以后需要返回
+declare @stuNum int, @sexNum int
+exec usp_getStuNumBySex @stuNum output, @sexNum output, '二期班'	-- 【重点】注意接收处也要标明 output
+exec usp_getStuNumBySex @classname='二期班', @totalNum=@stuNum output, @sexNum=@sexNum output	--【重点】如果是未按照参数传递要这么接收！！
+
