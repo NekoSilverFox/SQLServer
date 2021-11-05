@@ -112,7 +112,7 @@ go
 
 
 
--- 【output】带【输出参数】的存储过程
+-- 【output】带【输出参数】的存储过程，返回多个值的时候，只能使用 output
 -- 创建一个存储过程，输入班级和性别，输出班级总人数和该性别的人数
 if exists (select * from sysobjects where name='usp_getStuNumBySex')
 	DROP proc usp_getStuNumBySex
@@ -136,3 +136,23 @@ declare @stuNum int, @sexNum int
 exec usp_getStuNumBySex @stuNum output, @sexNum output, '二期班'	-- 【重点】注意接收处也要标明 output
 exec usp_getStuNumBySex @classname='二期班', @totalNum=@stuNum output, @sexNum=@sexNum output	--【重点】如果是未按照参数传递要这么接收！！
 
+
+
+-- 使用带有【返回值】的存储过程
+--【重点】注意！！返回值只能返回 int 类型！！！
+if exists(select * from sysobjects where name='usp_getStuNum')
+	drop proc usp_getStuNum
+go
+-- 根据班级号，返回指定人数
+create proc usp_getStuNum
+	@cid int
+as
+	declare @stuNum int
+	set @stuNum=(select count(*) from Student where ClassId=@cid)
+	return @stuNum			--【重点】注意！！返回值只能返回 int 类型！！！
+go
+
+-- 调用存储过程
+declare @count int
+exec @count=usp_getStuNum 6		--【重点】注意调用方式！！！
+print @count
