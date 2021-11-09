@@ -1218,7 +1218,46 @@ BEGIN transaction
 
 ![image-20211104165135745](README.assets/image-20211104165135745.png)
 
+- **触发器不能通过名称调用，更不能设置参数！**
+- 可以对一个表设置多个触发器
 
+![image-20211109221647413](README.assets/image-20211109221647413.png)
+
+![image-20211109221712381](README.assets/image-20211109221712381.png)
+
+#### DML 触发器（增删改查）
+
+![image-20211109221732436](README.assets/image-20211109221732436.png)
+
+![image-20211109232451708](README.assets/image-20211109232451708.png)
+
+#### DDL触发器
+
+![image-20211109232929902](README.assets/image-20211109232929902.png)
+
+![image-20211109233023897](README.assets/image-20211109233023897.png)
+
+#### 查看触发器
+
+![image-20211109233208541](README.assets/image-20211109233208541.png)
+
+![image-20211109233215551](README.assets/image-20211109233215551.png)
+
+![image-20211109233231592](README.assets/image-20211109233231592.png)
+
+#### 修改触发器
+
+![image-20211109233324741](README.assets/image-20211109233324741.png)
+
+#### 启用或禁用触发器
+
+![image-20211109233417722](README.assets/image-20211109233417722.png)
+
+![image-20211109233441465](README.assets/image-20211109233441465.png)
+
+
+
+![image-20211109233803189](README.assets/image-20211109233803189.png)
 
 ## 索引
 
