@@ -13,6 +13,8 @@ BEGIN
 END
 GO
 
+
+
 use CZSchool
 -- 在 post 中创建触发器，如果有重复的值就回滚到插入之前 
 GO
@@ -21,7 +23,8 @@ GO
 
 CREATE TRIGGER trig_addUser
 	ON [User]
-	AFTER INSERT
+	--AFTER INSERT
+	FOR INSERT
 AS
 BEGIN
 	DECLARE @nameuser char(20)
@@ -34,11 +37,12 @@ BEGIN
 	END
 END;
 
-INSERT [User] VALUES('a5sd', '44444456', 'asdass@asd.cn', '4646846')
+INSERT [User] VALUES('a5sd5', '44444456', 'asdass@asd.cn', '4646846')
 
 
 
 -- 触发器禁止修改
+use CZSchool
 GO
 DROP TRIGGER trig_changeUser
 GO
@@ -76,3 +80,6 @@ BEGIN
 		ROLLBACK TRANSACTION
 	END
 END
+GO
+
+DELETE [User] WHERE UserName='TT'

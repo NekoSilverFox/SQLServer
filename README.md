@@ -1216,6 +1216,110 @@ BEGIN transaction
 
 ## 触发器
 
+1. 创建触发器
+
+   - 触发器相当于一个特殊的存储过程，被DBMS调用。
+
+   - 触发器的事件只能是表的 insert/ delete / update操作。
+
+- SqlServer触发器的触发方式有两种：
+
+  （1）在表（增删改）操作**后**（after）触发，
+
+  （2）在操作**前**触发，此时表操作被替换为执行触发器中定义的sql代码。
+
+```sql
+-- 触发器
+CREATE TRIGGER tr_触发器名称
+	ON 表名
+	AFTER INSERT, DELETE, UPDATE	-- 触发条件
+AS
+BEGIN
+	SET NOCOUNT ON;	-- 指令
+	
+	-- =======================
+	-- 里面填任意SQL语句或存储过程
+	-- =======================
+
+END
+GO
+```
+
+2. inserted、deleted临时表
+
+   在 delete 数据的时候，可以假定数据库将要删除的数据放到一个deleted临时表中，我们可以向读取普通的表一样，select  字段  from delet**ed** 
+
+   而 insert 的时候道理一样，只不过是把要插入的数据放在insert**ed**表中
+
+   更新操作可以认为是执行了两个操作，先把那一行记录delete掉，然后再insert，所以deleted就是更新前的数据，inserted是更新后的数据。所以就不再有updated表了
+
+   - 以inserted为例说明这两个临时表
+
+   ```sql
+   --在插入的时候，输出插入记录（作为结果集）
+   insert into grade output inserted.id, inserted.classname  values('亲爱sdas的')   --结果集为插入的一条记录
+   
+   
+   --删除记录的时候，输出删除了哪些（作为结果集）
+   delete from OdsPC output deleted.*  where id > 7   --结果集为删掉的那几条记录
+   ```
+
+   ![img](https://images2017.cnblogs.com/blog/343308/201707/343308-20170731151436724-191891970.png)
+
+3. 在 触发器中使用inserted和deleted临时表
+
+   ```sql
+   --插入后触发器查询两个临时表
+   if exists(select * from sysobjects where name='tr_grade_insert')
+   	drop trigger tr_grade_insert
+   go
+   create trigger tr_grade_insert
+   	on grade for insert --为grade表创建触发器，在你对grade表进行插入操作后触发
+   as
+   	print 'inserted表存储操作之后的 与当前操作相关的数据，而与之前表的数据无关'
+   	select * from inserted
+   	print 'deleted表存储操作之前的数据'
+   	select * from deleted
+   go
+   
+   insert into grade values('亲爱sdas的')
+   
+   if exists(select * from sysobjects where name='tr_grade_delete')
+   	drop trigger tr_grade_delete
+   go
+   create trigger tr_grade_delete
+   	on grade after delete --为grade表创建触 发器，在你对grade表进行插入操作后触 发
+   as
+   	print 'inserted表存储操作之后的 与当前操作相关的数据，而与之前表的数据无关'
+   	select * from inserted
+   	print 'deleted表存储操作之前的数据'
+   	select * from deleted
+   go
+   
+   delete from grade where ClassId>18
+   
+   if exists(select * from sysobjects where name='tr_grade_update')
+   	drop trigger tr_grade_update
+   go
+   create trigger tr_grade_update
+   	on grade after update --为grade表创建触 发器，在你对grade表进行插入操作后触 发
+   as
+   	print 'inserted表存储操作之后的与当前操作相关的数据，而与之前表的数据无关'
+   	select * from inserted
+   	print 'deleted表存储操作之前的数据'
+   	select * from deleted
+   go
+   
+   update grade set classname='aaaaa' where ClassId>16
+   ```
+
+   **注意**
+
+   - SQLServer对某表的某个操作（如insert）允许定义多个触发器（名字不一样）
+   - 当该操作执行时，DBMS会分别调用它们。最后产生的结果可能不是你所期望的那样。**所以一个表的一个操作，最好只定义一个触发器。**
+
+
+
 ![image-20211104165135745](README.assets/image-20211104165135745.png)
 
 - **触发器不能通过名称调用，更不能设置参数！**
