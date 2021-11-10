@@ -37,7 +37,7 @@ BEGIN
 	END
 END;
 
-INSERT [User] VALUES('a5sd5', '44444456', 'asdass@asd.cn', '4646846')
+INSERT [User] VALUES('a5sd1', '44444456', 'asdass@asd.cn', '4646846')
 
 
 
@@ -83,3 +83,77 @@ END
 GO
 
 DELETE [User] WHERE UserName='TT'
+
+
+
+
+--插入后触发器查询两个临时表
+if exists(select * from sysobjects where name='tr_grade_insert')
+	drop trigger tr_grade_insert
+go
+create trigger tr_grade_insert
+	on grade for insert --为grade表创建触发器，在你对grade表进行插入操作后触发
+as
+	print 'inserted表存储操作之后的 与当前操作相关的数据，而与之前表的数据无关'
+	select * from inserted
+	print 'deleted表存储操作之前的数据'
+	select * from deleted
+go
+
+insert into grade values('亲爱sdas的')
+
+
+if exists(select * from sysobjects where name='tr_grade_delete')
+	drop trigger tr_grade_delete
+go
+create trigger tr_grade_delete
+	on grade after delete --为grade表创建触 发器，在你对grade表进行插入操作后触 发
+as
+	print 'inserted表存储操作之后的 与当前操作相关的数据，而与之前表的数据无关'
+	select * from inserted
+	print 'deleted表存储操作之前的数据'
+	select * from deleted
+go
+
+delete from grade where ClassId>18
+
+
+
+if exists(select * from sysobjects where name='tr_grade_update')
+	drop trigger tr_grade_update
+go
+create trigger tr_grade_update
+	on grade after update --为grade表创建触 发器，在你对grade表进行插入操作后触 发
+as
+	print 'inserted表存储操作之后的与当前操作相关的数据，而与之前表的数据无关'
+	select * from inserted
+	print 'deleted表存储操作之前的数据'
+	select * from deleted
+go
+
+update grade set classname='aaaaa' where ClassId>16
+
+
+
+
+-- 使用触发器模拟唯一键约束
+use CZSchool
+GO
+CREATE TRIGGER tr_GradeUnpiueClassname
+	ON grade
+	AFTER INSERT
+AS
+BEGIN
+	DECLARE @cid int, @cname nvarchar(50)
+	SELECT @cid=ClassId, @cname=classname FROM inserted
+
+	IF ((SELECT COUNT(*) FROM GRADE WHERE classname=@cname)>1)
+	BEGIN
+		PRINT 'classname已存在, 将被删除'
+		DELETE FROM grade WHERE ClassId=@cid
+	END
+	ELSE
+		PRINT '插入成功'
+END
+
+insert into grade values('newnewnew')

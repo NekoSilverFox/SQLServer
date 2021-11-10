@@ -1232,7 +1232,7 @@ BEGIN transaction
 -- 触发器
 CREATE TRIGGER tr_触发器名称
 	ON 表名
-	AFTER INSERT, DELETE, UPDATE	-- 触发条件
+	[AFTER/FOR] INSERT, DELETE, UPDATE	-- 触发条件
 AS
 BEGIN
 	SET NOCOUNT ON;	-- 指令
@@ -1365,7 +1365,11 @@ GO
 
 ## 索引
 
+![image-20211110005353688](README.assets/image-20211110005353688.png)
+
 ![image-20211104165150548](README.assets/image-20211104165150548.png)
+
+![image-20211110005336862](README.assets/image-20211110005336862.png)
 
 ## 临时表
 
