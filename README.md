@@ -1396,6 +1396,12 @@ SELECT * FROM STUDENT
 
 ![image-20211104165212775](README.assets/image-20211104165212775.png)
 
+![image-20211110170943753](README.assets/image-20211110170943753.png)
+
+
+
+
+
 ## Transact-SQL 修改
 
 - 数据库名称修改
