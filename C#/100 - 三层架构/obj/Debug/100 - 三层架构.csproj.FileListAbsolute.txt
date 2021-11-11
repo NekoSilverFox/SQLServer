@@ -1,0 +1,15 @@
+C:\Users\mi\Desktop\Programma\SQL\C#\100 - 三层架构\bin\Debug\100 - 三层架构.exe.config
+C:\Users\mi\Desktop\Programma\SQL\C#\100 - 三层架构\bin\Debug\100 - 三层架构.exe
+C:\Users\mi\Desktop\Programma\SQL\C#\100 - 三层架构\bin\Debug\100 - 三层架构.pdb
+C:\Users\mi\Desktop\Programma\SQL\C#\100 - 三层架构\bin\Debug\101 - BLL - 初识Business Logic Layer.dll
+C:\Users\mi\Desktop\Programma\SQL\C#\100 - 三层架构\bin\Debug\102 - DAL - Data Aceess Layer.dll
+C:\Users\mi\Desktop\Programma\SQL\C#\100 - 三层架构\bin\Debug\101 - BLL - 初识Business Logic Layer.pdb
+C:\Users\mi\Desktop\Programma\SQL\C#\100 - 三层架构\bin\Debug\102 - DAL - Data Aceess Layer.pdb
+C:\Users\mi\Desktop\Programma\SQL\C#\100 - 三层架构\obj\Debug\100 - 三层架构.csprojAssemblyReference.cache
+C:\Users\mi\Desktop\Programma\SQL\C#\100 - 三层架构\obj\Debug\_100___三层架构.Form1.resources
+C:\Users\mi\Desktop\Programma\SQL\C#\100 - 三层架构\obj\Debug\_100___三层架构.Properties.Resources.resources
+C:\Users\mi\Desktop\Programma\SQL\C#\100 - 三层架构\obj\Debug\100 - 三层架构.csproj.GenerateResource.cache
+C:\Users\mi\Desktop\Programma\SQL\C#\100 - 三层架构\obj\Debug\100 - 三层架构.csproj.CoreCompileInputs.cache
+C:\Users\mi\Desktop\Programma\SQL\C#\100 - 三层架构\obj\Debug\100 - 三层架构.csproj.CopyComplete
+C:\Users\mi\Desktop\Programma\SQL\C#\100 - 三层架构\obj\Debug\100 - 三层架构.exe
+C:\Users\mi\Desktop\Programma\SQL\C#\100 - 三层架构\obj\Debug\100 - 三层架构.pdb

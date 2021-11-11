@@ -1,0 +1,9 @@
+C:\Users\mi\Desktop\Programma\SQL\C#\101 - BLL - 初识Business Logic Layer\bin\Debug\101 - BLL - 初识Business Logic Layer.dll
+C:\Users\mi\Desktop\Programma\SQL\C#\101 - BLL - 初识Business Logic Layer\bin\Debug\101 - BLL - 初识Business Logic Layer.pdb
+C:\Users\mi\Desktop\Programma\SQL\C#\101 - BLL - 初识Business Logic Layer\bin\Debug\102 - DAL - Data Aceess Layer.dll
+C:\Users\mi\Desktop\Programma\SQL\C#\101 - BLL - 初识Business Logic Layer\bin\Debug\102 - DAL - Data Aceess Layer.pdb
+C:\Users\mi\Desktop\Programma\SQL\C#\101 - BLL - 初识Business Logic Layer\obj\Debug\101 - BLL - 初识Business Logic Layer.csprojAssemblyReference.cache
+C:\Users\mi\Desktop\Programma\SQL\C#\101 - BLL - 初识Business Logic Layer\obj\Debug\101 - BLL - 初识Business Logic Layer.csproj.CoreCompileInputs.cache
+C:\Users\mi\Desktop\Programma\SQL\C#\101 - BLL - 初识Business Logic Layer\obj\Debug\101 - BLL - 初识Business Logic Layer.csproj.CopyComplete
+C:\Users\mi\Desktop\Programma\SQL\C#\101 - BLL - 初识Business Logic Layer\obj\Debug\101 - BLL - 初识Business Logic Layer.dll
+C:\Users\mi\Desktop\Programma\SQL\C#\101 - BLL - 初识Business Logic Layer\obj\Debug\101 - BLL - 初识Business Logic Layer.pdb

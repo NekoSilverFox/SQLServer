@@ -1,0 +1,6 @@
+C:\Users\mi\Desktop\Programma\SQL\C#\102 - DAL - Data Aceess Layer\bin\Debug\102 - DAL - Data Aceess Layer.dll
+C:\Users\mi\Desktop\Programma\SQL\C#\102 - DAL - Data Aceess Layer\bin\Debug\102 - DAL - Data Aceess Layer.pdb
+C:\Users\mi\Desktop\Programma\SQL\C#\102 - DAL - Data Aceess Layer\obj\Debug\102 - DAL - Data Aceess Layer.csprojAssemblyReference.cache
+C:\Users\mi\Desktop\Programma\SQL\C#\102 - DAL - Data Aceess Layer\obj\Debug\102 - DAL - Data Aceess Layer.csproj.CoreCompileInputs.cache
+C:\Users\mi\Desktop\Programma\SQL\C#\102 - DAL - Data Aceess Layer\obj\Debug\102 - DAL - Data Aceess Layer.dll
+C:\Users\mi\Desktop\Programma\SQL\C#\102 - DAL - Data Aceess Layer\obj\Debug\102 - DAL - Data Aceess Layer.pdb
