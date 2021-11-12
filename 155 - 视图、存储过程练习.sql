@@ -3,7 +3,7 @@ GO
 
 ------------------> 视图例子 Примеры создания и использования представлений
 
---1.	Пример создания и использования представления для выборки  названий дисциплин, 
+--1.	Пример создания и использования 【представления】 для выборки  названий дисциплин, 
 --	по которым хотя бы одним студентом была получена оценка 
 CREATE VIEW Disciplines_with_balls 
 AS 
@@ -28,6 +28,7 @@ AS
 	JOIN Uplans ON Uplans.IdDisc=Balls.IdDisc
 	WHERE Semestr>=@Count_sem;
 GO
+
 
 
 --3. Пример создания и использования 【представления】 с использованием агрегатных функций【聚合函数】, 
@@ -287,3 +288,44 @@ AS
 		ON Students.NumSt=Balls.NumSt
 	GROUP BY Students.NumSt, Students.FIO, Students.NumGr
 GO
+
+exec usp_avgMark
+
+
+select * from Groups
+
+
+IF EXISTS(SELECT * FROM SYSOBJECTS WHERE NAME='usp_printStuAllinGroup')
+	DROP PROCEDURE usp_printStuAllinGroup
+GO
+GO
+CREATE PROCEDURE usp_printStuAllinGroup
+	@nameGroup	char(50)	output
+AS
+	SELECT Groups.NumGr, Students.NumSt ,Students.FIO
+	FROM Groups
+	INNER JOIN Students
+		ON Students.NumGr=Groups.NumGr
+	WHERE Groups.NumGr=@nameGroup
+GO
+
+EXEC usp_printStuAllinGroup @nameGroup='13504/1'
+
+
+
+
+IF EXISTS(SELECT * FROM SYSOBJECTS WHERE NAME='vw_stuWithPlan')
+	DROP VIEW vw_stuWithPlan
+GO
+
+CREATE VIEW vw_stuWithPlan
+AS
+	SELECT Groups.NumGr, Students.NumSt, Students.FIO, Directions.Title
+	FROM Students
+		INNER JOIN Groups
+			ON Groups.NumGr=Students.NumGr
+		INNER JOIN Directions
+			ON Directions.NumDir=Groups.NumDir
+GO
+
+SELECT * FROM vw_stuWithPlan

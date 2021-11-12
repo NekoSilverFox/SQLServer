@@ -1302,7 +1302,7 @@ GO
    	drop trigger tr_grade_update
    go
    create trigger tr_grade_update
-   	on grade after update --为grade表创建触 发器，在你对grade表进行插入操作后触 发
+   	on grade after update --为grade表创建触 发器，在你对grade表进行插入操作后触发
    as
    	print 'inserted表存储操作之后的与当前操作相关的数据，而与之前表的数据无关'
    	select * from inserted
@@ -2064,5 +2064,98 @@ private void btnSignIn_Click(object sender, EventArgs e)
 
   ![image-20211103184412085](README.assets/image-20211103184412085.png)
 
-- 
+
+### 菜单
+
+![image-20211112193843574](README.assets/image-20211112193843574.png)
+
+
+
+### MID
+
+MID - Multiple Document Interface
+
+**设置方法：**
+
+1. 选中窗体
+
+   ![image-20211112201453266](README.assets/image-20211112201453266.png)
+
+2. 开启是否为 MDI 容器
+
+   ![image-20211112194119538](README.assets/image-20211112194119538.png)
+
+3. 为子窗体设置继承
+
+4. 设置打开的子窗体列表
+
+   1. 选中菜单列表，并设置 `MdiWindowLisItem` 为需要的选项
+
+      ![image-20211112202428196](README.assets/image-20211112202428196.png)
+
+5.  【补充】在属性中更改窗体的`初始大小/属性`
+
+   ![image-20211112201614119](README.assets/image-20211112201614119.png)
+
+6. 【补充】禁止窗体最小化
+
+   ![image-20211112201705436](README.assets/image-20211112201705436.png)
+
+7. 【补充】是否禁止窗体最大化
+
+   ![image-20211112201741346](README.assets/image-20211112201741346.png)
+
+8. 【补充】帮助按钮
+
+   ![image-20211112201805576](README.assets/image-20211112201805576.png)
+
+9. 
+
+## 三层架构
+
+![image-20211110211313388](README.assets/image-20211110211313388.png)
+
+![image-20211110211333970](README.assets/image-20211110211333970.png)
+
+![image-20211110211345669](README.assets/image-20211110211345669.png)
+
+![image-20211110211427913](README.assets/image-20211110211427913.png)
+
+引用：引用的本质其实就是将引用文件的 `.dll` 文件做了一份复制
+
+![image-20211111181806259](README.assets/image-20211111181806259.png)
+
+**UI 层、BBL 业务层、DAL数据访问层 都需要 接收 MODEL 实体层返回的数据**
+
+技巧：
+
+- 如果一个类后面跟的是 **`Manager`** 这个单词，我们就认为它是**业务层**的
+- 如果一个类后面跟的是 **`Service`** 这个单词，我们就认为它是**数据层**的
+- 【重点】每一个数据库中的表都会有一个 **单独的业务层处理类** 和 **单独的数据访问层**！
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
