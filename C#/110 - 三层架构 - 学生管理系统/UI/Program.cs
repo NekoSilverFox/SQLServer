@@ -16,7 +16,16 @@ namespace UI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            // 【起始窗体】form1 就是 LoginForm，form1重命名的时候忘记配置自动修改了。。。
+            Form1 loginForm = new Form1();
+
+            // 打开的窗体会返回一个 DialogResult 值
+            if (loginForm.ShowDialog() == DialogResult.OK)
+            {
+                Application.Run(new MainForm());    // 【主窗体】
+
+            }
         }
     }
 }
