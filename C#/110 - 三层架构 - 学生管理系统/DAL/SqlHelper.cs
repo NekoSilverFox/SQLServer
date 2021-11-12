@@ -11,7 +11,7 @@ namespace DAL
 {
     class SqlHelper
     {
-        static string connStr = "Data Source=DESKTOP-HMF772I\\SQLSERVER;Initial Catalog=iTCASTsim;Integrated Security=True";
+        static string connStr = System.Configuration.ConfigurationManager.ConnectionStrings["connStr"].ConnectionString;
 
         #region 返回数据读取器对象 +static SqlDataReader ExecuteReader(string sql, params SqlParameter[] parameters)
         /// <summary>
@@ -22,6 +22,7 @@ namespace DAL
         /// <returns></returns>
         public static SqlDataReader ExecuteReader(string sql, params SqlParameter[] parameters)
         {
+            // 【重点】这里不需要释放连接通道，因为释放了连接通道，读取器对象也会被释放！
             SqlConnection conn = new SqlConnection(connStr);
             conn.Open();
 
