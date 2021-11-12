@@ -49,6 +49,10 @@
       <Project>{faa55cea-f6d4-43ac-b7cb-9efeede51007}</Project>
       <Name>102 - DAL - Data Aceess Layer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\103 - MODEL实体层\103 - MODEL实体层.csproj">
+      <Project>{9dd3c498-9eb1-48cd-bd36-485bf17a62ea}</Project>
+      <Name>103 - MODEL实体层</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

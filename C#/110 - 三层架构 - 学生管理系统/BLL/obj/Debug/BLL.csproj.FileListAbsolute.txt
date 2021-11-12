@@ -1,0 +1,11 @@
+C:\Users\mi\Desktop\Programma\SQL\C#\110 - 三层架构 - 学生管理系统\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+C:\Users\mi\Desktop\Programma\SQL\C#\110 - 三层架构 - 学生管理系统\BLL\bin\Debug\BLL.dll
+C:\Users\mi\Desktop\Programma\SQL\C#\110 - 三层架构 - 学生管理系统\BLL\bin\Debug\BLL.pdb
+C:\Users\mi\Desktop\Programma\SQL\C#\110 - 三层架构 - 学生管理系统\BLL\bin\Debug\DAL.dll
+C:\Users\mi\Desktop\Programma\SQL\C#\110 - 三层架构 - 学生管理系统\BLL\bin\Debug\MODEL.dll
+C:\Users\mi\Desktop\Programma\SQL\C#\110 - 三层架构 - 学生管理系统\BLL\bin\Debug\DAL.pdb
+C:\Users\mi\Desktop\Programma\SQL\C#\110 - 三层架构 - 学生管理系统\BLL\bin\Debug\MODEL.pdb
+C:\Users\mi\Desktop\Programma\SQL\C#\110 - 三层架构 - 学生管理系统\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
+C:\Users\mi\Desktop\Programma\SQL\C#\110 - 三层架构 - 学生管理系统\BLL\obj\Debug\BLL.csproj.CopyComplete
+C:\Users\mi\Desktop\Programma\SQL\C#\110 - 三层架构 - 学生管理系统\BLL\obj\Debug\BLL.dll
+C:\Users\mi\Desktop\Programma\SQL\C#\110 - 三层架构 - 学生管理系统\BLL\obj\Debug\BLL.pdb

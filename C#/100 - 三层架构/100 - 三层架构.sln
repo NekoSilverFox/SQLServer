@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "101 - BLL - 初识Business 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "102 - DAL - Data Aceess Layer", "..\102 - DAL - Data Aceess Layer\102 - DAL - Data Aceess Layer.csproj", "{FAA55CEA-F6D4-43AC-B7CB-9EFEEDE51007}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "103 - MODEL实体层", "..\103 - MODEL实体层\103 - MODEL实体层.csproj", "{9DD3C498-9EB1-48CD-BD36-485BF17A62EA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{FAA55CEA-F6D4-43AC-B7CB-9EFEEDE51007}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FAA55CEA-F6D4-43AC-B7CB-9EFEEDE51007}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FAA55CEA-F6D4-43AC-B7CB-9EFEEDE51007}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DD3C498-9EB1-48CD-BD36-485BF17A62EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DD3C498-9EB1-48CD-BD36-485BF17A62EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DD3C498-9EB1-48CD-BD36-485BF17A62EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DD3C498-9EB1-48CD-BD36-485BF17A62EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

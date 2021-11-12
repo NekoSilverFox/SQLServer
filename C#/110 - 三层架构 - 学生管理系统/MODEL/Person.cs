@@ -4,14 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-// 用来描述实体结构——表的结构
-namespace _103___MODEL实体层
+namespace MODEL
 {
-    public class PersonModel
+    public class Person
     {
-		public PersonModel()
+		public Person()
 		{ }
-
 		#region Model
 		private int _pid;
 		private int _pcid;

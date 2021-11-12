@@ -1,0 +1,9 @@
+C:\Users\mi\Desktop\Programma\SQL\C#\110 - 三层架构 - 学生管理系统\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
+C:\Users\mi\Desktop\Programma\SQL\C#\110 - 三层架构 - 学生管理系统\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\Users\mi\Desktop\Programma\SQL\C#\110 - 三层架构 - 学生管理系统\DAL\bin\Debug\DAL.dll
+C:\Users\mi\Desktop\Programma\SQL\C#\110 - 三层架构 - 学生管理系统\DAL\bin\Debug\DAL.pdb
+C:\Users\mi\Desktop\Programma\SQL\C#\110 - 三层架构 - 学生管理系统\DAL\bin\Debug\MODEL.dll
+C:\Users\mi\Desktop\Programma\SQL\C#\110 - 三层架构 - 学生管理系统\DAL\bin\Debug\MODEL.pdb
+C:\Users\mi\Desktop\Programma\SQL\C#\110 - 三层架构 - 学生管理系统\DAL\obj\Debug\DAL.csproj.CopyComplete
+C:\Users\mi\Desktop\Programma\SQL\C#\110 - 三层架构 - 学生管理系统\DAL\obj\Debug\DAL.dll
+C:\Users\mi\Desktop\Programma\SQL\C#\110 - 三层架构 - 学生管理系统\DAL\obj\Debug\DAL.pdb

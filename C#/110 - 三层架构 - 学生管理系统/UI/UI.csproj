@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5E4926D5-FBD1-434A-A339-F0BEA5E1CD77}</ProjectGuid>
+    <ProjectGuid>{9F382D63-458D-4337-BAFD-C660195323F2}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>_100___三层架构</RootNamespace>
-    <AssemblyName>100 - 三层架构</AssemblyName>
+    <RootNamespace>UI</RootNamespace>
+    <AssemblyName>UI</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -46,16 +46,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -80,13 +80,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\101 - BLL - 初识Business Logic Layer\101 - BLL - 初识Business Logic Layer.csproj">
-      <Project>{2b936e1d-0ba4-400c-b15e-c047ef0f1334}</Project>
-      <Name>101 - BLL - 初识Business Logic Layer</Name>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{68f54beb-d133-48bb-821b-fd38befc0f93}</Project>
+      <Name>BLL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\103 - MODEL实体层\103 - MODEL实体层.csproj">
-      <Project>{9dd3c498-9eb1-48cd-bd36-485bf17a62ea}</Project>
-      <Name>103 - MODEL实体层</Name>
+    <ProjectReference Include="..\MODEL\MODEL.csproj">
+      <Project>{32d73054-d6b7-4e14-b599-87499e719c7a}</Project>
+      <Name>MODEL</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

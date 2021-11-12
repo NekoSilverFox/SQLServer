@@ -1,0 +1,17 @@
+C:\Users\mi\Desktop\Programma\SQL\C#\110 - 三层架构 - 学生管理系统\UI\obj\Debug\UI.csprojAssemblyReference.cache
+C:\Users\mi\Desktop\Programma\SQL\C#\110 - 三层架构 - 学生管理系统\UI\obj\Debug\UI.Form1.resources
+C:\Users\mi\Desktop\Programma\SQL\C#\110 - 三层架构 - 学生管理系统\UI\obj\Debug\UI.Properties.Resources.resources
+C:\Users\mi\Desktop\Programma\SQL\C#\110 - 三层架构 - 学生管理系统\UI\obj\Debug\UI.csproj.GenerateResource.cache
+C:\Users\mi\Desktop\Programma\SQL\C#\110 - 三层架构 - 学生管理系统\UI\obj\Debug\UI.csproj.CoreCompileInputs.cache
+C:\Users\mi\Desktop\Programma\SQL\C#\110 - 三层架构 - 学生管理系统\UI\bin\Debug\UI.exe.config
+C:\Users\mi\Desktop\Programma\SQL\C#\110 - 三层架构 - 学生管理系统\UI\bin\Debug\UI.exe
+C:\Users\mi\Desktop\Programma\SQL\C#\110 - 三层架构 - 学生管理系统\UI\bin\Debug\UI.pdb
+C:\Users\mi\Desktop\Programma\SQL\C#\110 - 三层架构 - 学生管理系统\UI\bin\Debug\BLL.dll
+C:\Users\mi\Desktop\Programma\SQL\C#\110 - 三层架构 - 学生管理系统\UI\bin\Debug\MODEL.dll
+C:\Users\mi\Desktop\Programma\SQL\C#\110 - 三层架构 - 学生管理系统\UI\bin\Debug\DAL.dll
+C:\Users\mi\Desktop\Programma\SQL\C#\110 - 三层架构 - 学生管理系统\UI\bin\Debug\BLL.pdb
+C:\Users\mi\Desktop\Programma\SQL\C#\110 - 三层架构 - 学生管理系统\UI\bin\Debug\MODEL.pdb
+C:\Users\mi\Desktop\Programma\SQL\C#\110 - 三层架构 - 学生管理系统\UI\bin\Debug\DAL.pdb
+C:\Users\mi\Desktop\Programma\SQL\C#\110 - 三层架构 - 学生管理系统\UI\obj\Debug\UI.csproj.CopyComplete
+C:\Users\mi\Desktop\Programma\SQL\C#\110 - 三层架构 - 学生管理系统\UI\obj\Debug\UI.exe
+C:\Users\mi\Desktop\Programma\SQL\C#\110 - 三层架构 - 学生管理系统\UI\obj\Debug\UI.pdb

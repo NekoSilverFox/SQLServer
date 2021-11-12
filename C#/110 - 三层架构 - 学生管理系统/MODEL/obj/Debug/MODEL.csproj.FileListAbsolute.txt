@@ -1,0 +1,6 @@
+C:\Users\mi\Desktop\Programma\SQL\C#\110 - 三层架构 - 学生管理系统\MODEL\bin\Debug\MODEL.dll
+C:\Users\mi\Desktop\Programma\SQL\C#\110 - 三层架构 - 学生管理系统\MODEL\bin\Debug\MODEL.pdb
+C:\Users\mi\Desktop\Programma\SQL\C#\110 - 三层架构 - 学生管理系统\MODEL\obj\Debug\MODEL.csprojAssemblyReference.cache
+C:\Users\mi\Desktop\Programma\SQL\C#\110 - 三层架构 - 学生管理系统\MODEL\obj\Debug\MODEL.csproj.CoreCompileInputs.cache
+C:\Users\mi\Desktop\Programma\SQL\C#\110 - 三层架构 - 学生管理系统\MODEL\obj\Debug\MODEL.dll
+C:\Users\mi\Desktop\Programma\SQL\C#\110 - 三层架构 - 学生管理系统\MODEL\obj\Debug\MODEL.pdb
