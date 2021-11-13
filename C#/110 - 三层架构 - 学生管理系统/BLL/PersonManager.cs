@@ -25,5 +25,18 @@ namespace BLL
             return personService.Login(name);
         }
         #endregion
+
+
+        #region
+        /// <summary>
+        /// 获取所有人员列表
+        /// </summary>
+        /// <param name="isDel"></param>
+        /// <returns></returns>
+        public List<MODEL.Person> GetAllPersonList(bool isDel)
+        {
+            return personService.GetAllPersonList(isDel);
+        }
+        #endregion
     }
 }

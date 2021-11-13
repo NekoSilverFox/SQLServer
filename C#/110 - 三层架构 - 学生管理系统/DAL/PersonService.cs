@@ -50,5 +50,67 @@ namespace DAL
         }
         #endregion
 
+
+        #region
+        /// <summary>
+        /// 获取所有人员列表
+        /// </summary>
+        /// <param name="isDel"></param>
+        /// <returns></returns>
+        public List<MODEL.Person> GetAllPersonList(bool isDel)
+        {
+            string sql = "SELECT PID, PCID, PType, PLoginName, PCName, PPYName, PPwd, PGender, PEmail, PAreas, PIsDel, PAddTime FROM Person WHERE PIsDel=@idDel";
+            SqlParameter parameter = new SqlParameter("@idDel", isDel);
+
+            DataTable dataTable = SqlHelper.ExectureTabel(sql, parameter);
+            List<MODEL.Person> personList = null;
+
+            // 判断有没有行
+            if (dataTable.Rows.Count > 0)
+            {
+                personList = new List<MODEL.Person>();
+
+                // 遍历表，将表的每一行转换为对应的实体对象
+                foreach(DataRow row in dataTable.Rows)
+                {
+                    // 每一行数据对应一个 Person 对象
+                    MODEL.Person tmpPerson = new MODEL.Person();
+
+                    // 调用方法，将当前的数据行转换为 Person 对象
+                    PersonRow2PersonObject(row, tmpPerson);
+
+                    // 将对象添加到集合当中
+                    personList.Add(tmpPerson);
+                }
+            }
+            return personList;
+        }
+        #endregion
+
+
+        #region 将人员表的数据行转为人员表实体对象 + PersonRow2PersonObject(DataRow row, MODEL.Person person)
+        /// <summary>
+        /// 将人员表的数据行转为人员表实体对象
+        /// </summary>
+        /// <param name="row"></param>
+        /// <param name="person"></param>
+        void PersonRow2PersonObject(DataRow row, MODEL.Person person)
+        {
+
+            person.PID = (int)row["PID"];
+            person.PCID = (int)row["PCID"];
+            person.PType = (int)row["PType"];
+            person.PLoginName = row["PLoginName"].ToString();
+            person.PCName = row["PCName"].ToString();
+            person.PPYName = row["PPYName"].ToString();
+            person.PPwd = row["PPwd"].ToString();
+            person.PGender = (bool)row["PGender"];
+            person.PEmail = row["PEmail"].ToString();
+            person.PAreas = row["PAreas"].ToString();
+            person.PIsDel = (bool)row["PIsDel"];
+            person.PAddTime = Convert.ToDateTime(row["PAddTime"]);
+
+        }
+        #endregion
     }
 }

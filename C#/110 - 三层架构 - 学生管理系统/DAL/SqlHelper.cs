@@ -33,5 +33,28 @@ namespace DAL
             return comm.ExecuteReader(CommandBehavior.CloseConnection);
         }
         #endregion
+
+
+
+        #region 获取结果集 + static DataTable ExectureTabel(string sql, params SqlParameter[] parameters)
+        /// <summary>
+        /// 获取结果集
+        /// </summary>
+        /// <param name="sql">查询命令</param>
+        /// <param name="parameters">参数列表</param>
+        /// <returns></returns>
+        public static DataTable ExectureTabel(string sql, params SqlParameter[] parameters)
+        {
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(sql, connStr);
+            DataTable dataTable = new DataTable();
+
+            // 为什么使用 SelectCommand：
+            // 因为在 Fill 方法中使用的命令对象就是 SelectCommand，如果将参数赋给其他命令对象，将报错——没有提供某个参数
+            dataAdapter.SelectCommand.Parameters.AddRange(parameters);
+            dataAdapter.Fill(dataTable);
+
+            return dataTable;
+        }
+        #endregion
     }
 }

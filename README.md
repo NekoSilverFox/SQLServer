@@ -1935,72 +1935,6 @@ while (dataReader.Read())
    }
    ```
 
-### 读取器 + 视图（C# ListView）的使用
-
-1. 在 C# 中添加一个 ListView
-
-   ![image-20211027191544234](README.assets/image-20211027191544234.png)
-
-2. 在这个  ListView 的属性中设置（配置）
-
-3. 增加行
-
-   ![image-20211027191652310](README.assets/image-20211027191652310.png)
-
-4. 在 View 中设置为 Details 可以在 ListView 中显示具体的行名称
-
-   ![image-20211027191758176](README.assets/image-20211027191758176.png)
-
-   ![image-20211027191814682](README.assets/image-20211027191814682.png)
-
-5. FullRowSelect 可以检查选择
-
-   ![image-20211027192134810](README.assets/image-20211027192134810.png)
-
-6. MultiSelect 为是否只能选择一行
-
-   - 设置为 False 表示可以选择多行
-
-   ![image-20211027192158408](README.assets/image-20211027192158408.png)
-
-7. GridLine 是网格线
-
-   打开以后可以使表好看一些
-
-   ![image-20211027192346786](README.assets/image-20211027192346786.png)
-
-   ![image-20211027192407011](README.assets/image-20211027192407011.png)
-
-8. 点击**窗体空白处**配置 ListView 要加载的数据
-
-   **【重点】注意是窗体空白处，而不是点那个视图！！！！**
-
-   ![image-20211027192511583](README.assets/image-20211027192511583.png)
-
-9. 在增加了这种 ContextMenuStrip（右键菜单） 按一下操作进行绑定到 ListView
-
-   ![image-20211027201635195](README.assets/image-20211027201635195.png)
-
-   选中 ListView 在右侧选择要绑定的菜单
-
-   ![image-20211027201827027](README.assets/image-20211027201827027.png)
-
-   <img src="README.assets/image-20211027201855219.png" alt="image-20211027201855219" style="zoom:80%;" />
-
-10. 对 ListView 进行事件的绑定
-
-    示例：进行点击事件的绑定，选中吗，某一行后，将内容显示在 TextBook中
-
-    1. 选中已经创建的 ListView
-
-    2. 点击闪电标志（事件），选择Click
-
-    3. 双击框框（不是下拉选择）
-
-       ![image-20211027202423173](README.assets/image-20211027202423173.png)
-
-    
-
 ### 参数化查询
 
 ![image-20211028141301677](README.assets/image-20211028141301677.png)
@@ -2111,7 +2045,90 @@ MID - Multiple Document Interface
 
    ![image-20211112201805576](README.assets/image-20211112201805576.png)
 
-9. 
+### 控件的显示和隐藏
+
+任何控件都可以通过设置以下选项控制显示或隐藏
+
+设置为 `False` 后，**运行时**就可以看不到。
+
+![image-20211113133513608](README.assets/image-20211113133513608.png)
+
+### 读取器 + 视图（C# ListView）的使用
+
+1. 在 C# 中添加一个 ListView
+
+   ![image-20211027191544234](README.assets/image-20211027191544234.png)
+
+2. 在这个  ListView 的属性中设置（配置）
+
+3. 增加行
+
+   ![image-20211027191652310](README.assets/image-20211027191652310.png)
+
+4. 在 View 中设置为 Details 可以在 ListView 中显示具体的行名称
+
+   ![image-20211027191758176](README.assets/image-20211027191758176.png)
+
+   ![image-20211027191814682](README.assets/image-20211027191814682.png)
+
+5. FullRowSelect 可以检查选择
+
+   ![image-20211027192134810](README.assets/image-20211027192134810.png)
+
+6. MultiSelect 为是否只能选择一行
+
+   - 设置为 False 表示可以选择多行
+
+   ![image-20211027192158408](README.assets/image-20211027192158408.png)
+
+7. GridLine 是网格线
+
+   打开以后可以使表好看一些
+
+   ![image-20211027192346786](README.assets/image-20211027192346786.png)
+
+   ![image-20211027192407011](README.assets/image-20211027192407011.png)
+
+8. 点击**窗体空白处**配置 ListView 要加载的数据
+
+   **【重点】注意是窗体空白处，而不是点那个视图！！！！**
+
+   ![image-20211027192511583](README.assets/image-20211027192511583.png)
+
+9. 在增加了这种 ContextMenuStrip（右键菜单） 按一下操作进行绑定到 ListView
+
+   ![image-20211027201635195](README.assets/image-20211027201635195.png)
+
+   选中 ListView 在右侧选择要绑定的菜单
+
+   ![image-20211027201827027](README.assets/image-20211027201827027.png)
+
+   <img src="README.assets/image-20211027201855219.png" alt="image-20211027201855219" style="zoom:80%;" />
+
+10. 对 ListView 进行事件的绑定
+
+    示例：进行点击事件的绑定，选中吗，某一行后，将内容显示在 TextBook中
+
+    1. 选中已经创建的 ListView
+
+    2. 点击闪电标志（事件），选择Click
+
+    3. 双击框框（不是下拉选择）
+
+       ![image-20211027202423173](README.assets/image-20211027202423173.png)
+
+
+### 数据显示控件 DataGridView
+
+![image-20211113133832403](README.assets/image-20211113133832403.png)
+
+1. 如果子窗体被控件遮住
+
+   右键，选择至于底层
+
+   ![image-20211113134008233](README.assets/image-20211113134008233.png)
+
+2. 
 
 ## 三层架构
 
