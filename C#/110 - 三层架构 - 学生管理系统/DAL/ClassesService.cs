@@ -19,7 +19,7 @@ namespace DAL
         /// <returns></returns>
         public List<MODEL.Classes> getAllClassesList(bool cisDel)
         {
-            string sql = "SELECT CID, Cname, Ccount, cimg, Cisdel, Caddtime, FROM Classes WHERE cisdel=@isDel";
+            string sql = "SELECT CID, Cname, Ccount, cimg, Cisdel, Caddtime FROM Classes WHERE cisdel=@isDel";
             SqlParameter parameter = new SqlParameter("@isDel", cisDel);
             DataTable dataTable = SqlHelper.ExectureTabel(sql, parameter);
             // 将表的每一行数据转换为对象然后添加到集合中。因为表的每一行，每一列是一个 Object ，如果后期在控件中修改的话要在对象中做
