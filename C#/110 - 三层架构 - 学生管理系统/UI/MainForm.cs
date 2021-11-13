@@ -25,5 +25,10 @@ namespace UI
             personForm.MdiParent = this;
             personForm.Show();
         }
+
+        private void tsmiClass_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
