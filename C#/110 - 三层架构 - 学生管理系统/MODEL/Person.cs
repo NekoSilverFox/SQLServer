@@ -13,6 +13,7 @@ namespace MODEL
 		#region Model
 		private int _pid;
 		private int _pcid;
+		private string _cname;
 		private int _ptype = 1;
 		private string _ploginname;
 		private string _pcname;
@@ -39,6 +40,16 @@ namespace MODEL
 			set { _pcid = value; }
 			get { return _pcid; }
 		}
+
+		/// <summary>
+		/// 班级名称
+		/// </summary>
+		public string Cname
+		{
+			get { return _cname; }
+			set { _cname = value;  }
+		}
+
 		/// <summary>
 		/// 人员类型(1-学生,2-老师)
 		/// </summary>

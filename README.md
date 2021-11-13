@@ -2120,6 +2120,8 @@ MID - Multiple Document Interface
 
 ### 数据显示控件 DataGridView
 
+**注意：在获取数据的时候和dgv控件做数据绑定的时候，不支持 `表.字段` 的方式！**
+
 ![image-20211113133832403](README.assets/image-20211113133832403.png)
 
 1. 如果子窗体被控件遮住
@@ -2128,7 +2130,33 @@ MID - Multiple Document Interface
 
    ![image-20211113134008233](README.assets/image-20211113134008233.png)
 
-2. 
+2. 添加列
+
+   ![image-20211113175135730](README.assets/image-20211113175135730.png)
+
+   ​	
+
+3. 用最后一个行，填充没有沾满的区域
+
+   ![image-20211113190908220](README.assets/image-20211113190908220.png)
+
+4. 空行不允许用户添加行
+
+   ![image-20211113190951867](README.assets/image-20211113190951867.png)
+
+5. 关闭包含行标题列
+
+   ![image-20211113191053140](README.assets/image-20211113191053140.png)
+
+6. 整行选择
+
+   ![image-20211113191152165](README.assets/image-20211113191152165.png)
+
+7. 不允许修改多行
+
+   ![image-20211113191221431](README.assets/image-20211113191221431.png)
+
+8. 
 
 ## 三层架构
 

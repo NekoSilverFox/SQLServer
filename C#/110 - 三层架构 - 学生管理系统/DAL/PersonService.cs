@@ -59,7 +59,7 @@ namespace DAL
         /// <returns></returns>
         public List<MODEL.Person> GetAllPersonList(bool isDel)
         {
-            string sql = "SELECT PID, PCID, PType, PLoginName, PCName, PPYName, PPwd, PGender, PEmail, PAreas, PIsDel, PAddTime FROM Person WHERE PIsDel=@idDel";
+            string sql = "SELECT PID, PCID, Classes.CName AS the_cname, PType, PLoginName, PCName, PPYName, PPwd, PGender, PEmail, PAreas, PIsDel, PAddTime FROM Person INNER JOIN Classes ON Person.PCID=Classes.CID WHERE PIsDel=@idDel";
             SqlParameter parameter = new SqlParameter("@idDel", isDel);
 
             DataTable dataTable = SqlHelper.ExectureTabel(sql, parameter);
@@ -99,6 +99,8 @@ namespace DAL
 
             person.PID = (int)row["PID"];
             person.PCID = (int)row["PCID"];
+            // 在获取数据的时候和 dgv 控件做数据绑定的时候，不支持 `表.字段` 的方式
+            person.Cname = row["the_cname"].ToString();
             person.PType = (int)row["PType"];
             person.PLoginName = row["PLoginName"].ToString();
             person.PCName = row["PCName"].ToString();

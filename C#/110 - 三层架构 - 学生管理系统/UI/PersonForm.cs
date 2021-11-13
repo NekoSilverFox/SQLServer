@@ -22,6 +22,9 @@ namespace UI
         private PersonForm()
         {
             InitializeComponent();
+
+            // 如果没有绑定的列不会自动生成显示
+            this.dgvList.AutoGenerateColumns = false;
         }
 
         #region 单例模式生成唯一的当前窗口 + public static PersonForm CreateSingle()
