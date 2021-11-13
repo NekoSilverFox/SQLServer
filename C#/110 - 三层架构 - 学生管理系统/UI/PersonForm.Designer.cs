@@ -562,7 +562,7 @@
             // 
             // Column5
             // 
-            this.Column5.DataPropertyName = "pgender";
+            this.Column5.DataPropertyName = "pgenderString";
             this.Column5.HeaderText = "性别";
             this.Column5.Name = "Column5";
             // 
@@ -574,7 +574,7 @@
             // 
             // Column7
             // 
-            this.Column7.DataPropertyName = "ptype";
+            this.Column7.DataPropertyName = "ptypeString";
             this.Column7.HeaderText = "身份";
             this.Column7.Name = "Column7";
             // 

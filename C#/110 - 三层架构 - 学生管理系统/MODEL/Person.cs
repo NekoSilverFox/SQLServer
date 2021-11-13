@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace MODEL
 {
-    public class Person
-    {
+	public class Person
+	{
 		public Person()
 		{ }
 		#region Model
@@ -47,7 +47,7 @@ namespace MODEL
 		public string Cname
 		{
 			get { return _cname; }
-			set { _cname = value;  }
+			set { _cname = value; }
 		}
 
 		/// <summary>
@@ -58,6 +58,15 @@ namespace MODEL
 			set { _ptype = value; }
 			get { return _ptype; }
 		}
+
+		private string pTypeString;
+		public string PTypeString
+		{
+			get { return _ptype == 1 ? "教员" : "学员"; }
+			set { _ptype = value == "教员" ? 1 : 2; }		// 如果不写 set，以后无法在控件中修改这个值
+		}
+
+
 		/// <summary>
 		/// 登录名
 		/// </summary>
@@ -98,6 +107,20 @@ namespace MODEL
 			set { _pgender = value; }
 			get { return _pgender; }
 		}
+
+		private string pgenderString;
+		/// <summary>
+		/// 获取性别字符串
+		/// </summary>
+		public string PgenderString
+		{
+			// 注意，这里是给 PGender 和判断和赋值
+			get { return PGender? "男" : "女"; }
+			set { _pgender = value == "男" ? true : false; }
+		}
+
+
+
 		/// <summary>
 		/// 电子邮件地址
 		/// </summary>
@@ -130,6 +153,8 @@ namespace MODEL
 			set { _paddtime = value; }
 			get { return _paddtime; }
 		}
+
+
 		#endregion Model
 
 	}
