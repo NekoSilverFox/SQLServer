@@ -593,6 +593,7 @@
             this.Controls.Add(this.toolStrip1);
             this.Name = "PersonForm";
             this.Text = "PersonForm";
+            this.Load += new System.EventHandler(this.PersonForm_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
