@@ -79,6 +79,7 @@
             this.tsmiStudent.Name = "tsmiStudent";
             this.tsmiStudent.Size = new System.Drawing.Size(68, 21);
             this.tsmiStudent.Text = "学员管理";
+            this.tsmiStudent.Click += new System.EventHandler(this.tsmiStudent_Click);
             // 
             // tmiFeedBack
             // 

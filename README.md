@@ -2056,6 +2056,8 @@ private void btnSignIn_Click(object sender, EventArgs e)
 }
 ```
 
+## 控件
+
 ### 下拉列表
 
 ![image-20211103184335130](README.assets/image-20211103184335130.png)
@@ -2071,7 +2073,7 @@ private void btnSignIn_Click(object sender, EventArgs e)
 
 
 
-### MID
+### MID（多文本文本界面）
 
 MID - Multiple Document Interface
 

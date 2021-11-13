@@ -16,5 +16,14 @@ namespace UI
         {
             InitializeComponent();
         }
+
+        private void tsmiStudent_Click(object sender, EventArgs e)
+        {
+            PersonForm personForm = new PersonForm();
+
+            // 指定打开窗体的MDI父容器为当前窗体
+            personForm.MdiParent = this;
+            personForm.Show();
+        }
     }
 }
