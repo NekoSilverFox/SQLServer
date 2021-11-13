@@ -113,6 +113,7 @@
             this.tsmiAddStudent.Name = "tsmiAddStudent";
             this.tsmiAddStudent.Size = new System.Drawing.Size(56, 22);
             this.tsmiAddStudent.Text = "新增学员";
+            this.tsmiAddStudent.Click += new System.EventHandler(this.tsmiAddStudent_Click);
             // 
             // tsmiUpdate
             // 
@@ -247,6 +248,7 @@
             this.cboClasses.Name = "cboClasses";
             this.cboClasses.Size = new System.Drawing.Size(100, 20);
             this.cboClasses.TabIndex = 11;
+            this.cboClasses.SelectedIndexChanged += new System.EventHandler(this.cboClasses_SelectedIndexChanged);
             // 
             // btnCancel
             // 
