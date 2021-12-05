@@ -4,3 +4,6 @@ C:\Users\mi\Desktop\Programma\SQL\C#\102 - DAL - Data Aceess Layer\obj\Debug\102
 C:\Users\mi\Desktop\Programma\SQL\C#\102 - DAL - Data Aceess Layer\obj\Debug\102 - DAL - Data Aceess Layer.csproj.CoreCompileInputs.cache
 C:\Users\mi\Desktop\Programma\SQL\C#\102 - DAL - Data Aceess Layer\obj\Debug\102 - DAL - Data Aceess Layer.dll
 C:\Users\mi\Desktop\Programma\SQL\C#\102 - DAL - Data Aceess Layer\obj\Debug\102 - DAL - Data Aceess Layer.pdb
+C:\Users\mi\Desktop\Programma\SQL\C#\102 - DAL - Data Aceess Layer\bin\Debug\103 - MODEL实体层.dll
+C:\Users\mi\Desktop\Programma\SQL\C#\102 - DAL - Data Aceess Layer\bin\Debug\103 - MODEL实体层.pdb
+C:\Users\mi\Desktop\Programma\SQL\C#\102 - DAL - Data Aceess Layer\obj\Debug\102 - DAL - Data Aceess Layer.csproj.CopyComplete

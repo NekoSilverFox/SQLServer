@@ -1,0 +1,6 @@
+C:\Users\mi\Desktop\Programma\SQL\C#\103 - MODEL实体层\bin\Debug\103 - MODEL实体层.dll
+C:\Users\mi\Desktop\Programma\SQL\C#\103 - MODEL实体层\bin\Debug\103 - MODEL实体层.pdb
+C:\Users\mi\Desktop\Programma\SQL\C#\103 - MODEL实体层\obj\Debug\103 - MODEL实体层.csprojAssemblyReference.cache
+C:\Users\mi\Desktop\Programma\SQL\C#\103 - MODEL实体层\obj\Debug\103 - MODEL实体层.csproj.CoreCompileInputs.cache
+C:\Users\mi\Desktop\Programma\SQL\C#\103 - MODEL实体层\obj\Debug\103 - MODEL实体层.dll
+C:\Users\mi\Desktop\Programma\SQL\C#\103 - MODEL实体层\obj\Debug\103 - MODEL实体层.pdb

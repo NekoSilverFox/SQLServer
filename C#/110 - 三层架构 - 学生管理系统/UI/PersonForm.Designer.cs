@@ -239,6 +239,7 @@
             this.gpAdd.TabStop = false;
             this.gpAdd.Text = "新增";
             this.gpAdd.Visible = false;
+            this.gpAdd.Enter += new System.EventHandler(this.gpAdd_Enter);
             // 
             // cboClasses
             // 
@@ -267,6 +268,7 @@
             this.btnOk.TabIndex = 16;
             this.btnOk.Text = "确定";
             this.btnOk.UseVisualStyleBackColor = true;
+            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
             // btnChoice
             // 

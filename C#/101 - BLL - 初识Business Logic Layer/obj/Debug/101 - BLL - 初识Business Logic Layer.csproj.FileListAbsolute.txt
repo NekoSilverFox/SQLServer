@@ -7,3 +7,5 @@ C:\Users\mi\Desktop\Programma\SQL\C#\101 - BLL - 初识Business Logic Layer\obj\
 C:\Users\mi\Desktop\Programma\SQL\C#\101 - BLL - 初识Business Logic Layer\obj\Debug\101 - BLL - 初识Business Logic Layer.csproj.CopyComplete
 C:\Users\mi\Desktop\Programma\SQL\C#\101 - BLL - 初识Business Logic Layer\obj\Debug\101 - BLL - 初识Business Logic Layer.dll
 C:\Users\mi\Desktop\Programma\SQL\C#\101 - BLL - 初识Business Logic Layer\obj\Debug\101 - BLL - 初识Business Logic Layer.pdb
+C:\Users\mi\Desktop\Programma\SQL\C#\101 - BLL - 初识Business Logic Layer\bin\Debug\103 - MODEL实体层.dll
+C:\Users\mi\Desktop\Programma\SQL\C#\101 - BLL - 初识Business Logic Layer\bin\Debug\103 - MODEL实体层.pdb

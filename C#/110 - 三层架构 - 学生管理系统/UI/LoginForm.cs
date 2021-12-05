@@ -54,5 +54,10 @@ namespace UI
                 }
             }
         }
+
+        private void btnCanel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

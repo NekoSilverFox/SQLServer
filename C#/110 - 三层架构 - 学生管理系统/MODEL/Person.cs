@@ -115,8 +115,8 @@ namespace MODEL
 		public string PgenderString
 		{
 			// 注意，这里是给 PGender 和判断和赋值
-			get { return PGender? "男" : "女"; }
 			set { _pgender = value == "男" ? true : false; }
+			get { return PGender? "男" : "女"; }
 		}
 
 

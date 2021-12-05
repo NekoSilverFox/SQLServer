@@ -31,9 +31,9 @@ namespace UI
             this.dgvList.AutoGenerateColumns = false;
 
             // 绑定班级下拉列表数据
-            this.cboClasses.DisplayMember = "cname";
-            this.cboClasses.ValueMember = "cid";    // 注意这里，绑定
-            this.cboClasses.DataSource = classesManager.getAllClassesList(false);
+            this.cboClasses.DisplayMember = "cname";    // 显示的值
+            this.cboClasses.ValueMember = "cid";    // 注意这里，绑定实际的值
+            this.cboClasses.DataSource = classesManager.getAllClassesList(false);   // 绑定集合
         }
 
         #region 单例模式生成唯一的当前窗口 + public static PersonForm CreateSingle()
@@ -78,6 +78,45 @@ namespace UI
         private void cboClasses_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void gpAdd_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnOk_Click(object sender, EventArgs e)
+        {
+            MODEL.Person newPerson = new MODEL.Person();
+
+            /*
+             一般有 2 种方式取出下拉列表中存储的 ID号：
+                1. 通过 SelectedValue，前提是你之前设置了 ValueMember 值
+                2. 可以通过绑定项（SelectItem）
+                    如果数据源是表，那么 SelectedItem 就是 DataRowView，
+                    如果数据源是集合，那么 SelectedItem 就是对象
+             */
+            newPerson.PCID = (this.cboClasses.SelectedItem as MODEL.Classes).CID;
+            newPerson.PCName = this.txtName.Text.Trim();
+            newPerson.PType = this.cboIdentity.SelectedIndex + 1;
+            newPerson.PLoginName = txtLoginName.Text.Trim();
+            newPerson.PPYName = ""; // 以后再处理
+            newPerson.PPwd = txtPwd2.Text.Trim();
+            newPerson.PGender = rdoMale.Checked;
+            newPerson.PEmail = txtEmail.Text.Trim();
+            newPerson.PAreas = ""; // 以后再处理
+
+            if (personManager.InsertPerson(newPerson) == 1)
+            {
+                MessageBox.Show("添加成功！");
+
+                // 【重点】添加成功后记得刷新！！！！也就是重新加载一下
+                this.dgvList.DataSource = personManager.GetAllPersonList(false);
+            }
+            else
+            {
+                MessageBox.Show("添加失败！");
+            }
         }
     }
 }

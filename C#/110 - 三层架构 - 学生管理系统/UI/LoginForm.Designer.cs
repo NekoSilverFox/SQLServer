@@ -88,6 +88,7 @@
             this.btnCanel.TabIndex = 1;
             this.btnCanel.Text = "取消";
             this.btnCanel.UseVisualStyleBackColor = true;
+            this.btnCanel.Click += new System.EventHandler(this.btnCanel_Click);
             // 
             // Form1
             // 

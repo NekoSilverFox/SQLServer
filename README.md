@@ -2156,7 +2156,10 @@ MID - Multiple Document Interface
 
    ![image-20211113191221431](README.assets/image-20211113191221431.png)
 
-8. 
+8. 内部数据自动换行：
+
+   - ![image-20211205151750521](README.assets/image-20211205151750521.png)
+   - ![image-20211205151851900](README.assets/image-20211205151851900.png)
 
 ## 三层架构
 

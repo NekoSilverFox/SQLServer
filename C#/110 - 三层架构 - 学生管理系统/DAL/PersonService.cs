@@ -114,5 +114,35 @@ namespace DAL
 
         }
         #endregion
+
+        #region 插入新人员信息 +int InsertPerson(MODEL.Person newPerson)
+        /// <summary>
+        /// 插入新人员信息
+        /// </summary>
+        /// <param name="newPerson"></param>
+        /// <returns></returns>
+        public int InsertPerson(MODEL.Person newPerson)
+        {
+            // 别忘了没有的参数写成 default
+            string sql = "INSERT INTO Person values(@pcid, @ptype, @ploginame, @pcname, @ppyname, @ppwd, @pgenter, @pemail, @pareas, default, default)";
+
+            SqlParameter[] ps =
+            {
+                new SqlParameter("pcid", newPerson.PCID),
+                new SqlParameter("ptype", newPerson.PType),
+                new SqlParameter("ploginame", newPerson.PLoginName),
+                new SqlParameter("pcname", newPerson.PCName),
+                new SqlParameter("ppyname", string.IsNullOrEmpty(newPerson.PPYName) ? DBNull.Value : (object)newPerson.PPYName),
+                new SqlParameter("ppwd", newPerson.PPwd),
+                new SqlParameter("pgenter", newPerson.PGender),
+                // 如果没传入就给 NULL
+                //new SqlParameter("pemail", newPerson.PEmail),
+                //new SqlParameter("pareas", newPerson.PAreas)
+                new SqlParameter("pemail", string.IsNullOrEmpty(newPerson.PEmail) ? DBNull.Value : (object)newPerson.PEmail),
+                new SqlParameter("pareas", string.IsNullOrEmpty(newPerson.PAreas) ? DBNull.Value : (object)newPerson.PAreas)
+            };
+            return SqlHelper.ExecuteNonQuery(sql, ps);
+        }
+        #endregion
     }
 }

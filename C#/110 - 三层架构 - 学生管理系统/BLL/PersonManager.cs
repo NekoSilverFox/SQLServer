@@ -27,7 +27,7 @@ namespace BLL
         #endregion
 
 
-        #region
+        #region 获取所有人员列表+List<MODEL.Person> GetAllPersonList(bool isDel)
         /// <summary>
         /// 获取所有人员列表
         /// </summary>
@@ -36,6 +36,18 @@ namespace BLL
         public List<MODEL.Person> GetAllPersonList(bool isDel)
         {
             return personService.GetAllPersonList(isDel);
+        }
+        #endregion
+
+        #region
+        /// <summary>
+        /// 插入新人员信息
+        /// </summary>
+        /// <param name="newPerson"></param>
+        /// <returns></returns>
+        public int InsertPerson(MODEL.Person newPerson)
+        {
+            return personService.InsertPerson(newPerson);
         }
         #endregion
     }

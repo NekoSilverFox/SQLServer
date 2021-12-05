@@ -13,3 +13,5 @@ C:\Users\mi\Desktop\Programma\SQL\C#\100 - 三层架构\obj\Debug\100 - 三层�
 C:\Users\mi\Desktop\Programma\SQL\C#\100 - 三层架构\obj\Debug\100 - 三层架构.csproj.CopyComplete
 C:\Users\mi\Desktop\Programma\SQL\C#\100 - 三层架构\obj\Debug\100 - 三层架构.exe
 C:\Users\mi\Desktop\Programma\SQL\C#\100 - 三层架构\obj\Debug\100 - 三层架构.pdb
+C:\Users\mi\Desktop\Programma\SQL\C#\100 - 三层架构\bin\Debug\103 - MODEL实体层.dll
+C:\Users\mi\Desktop\Programma\SQL\C#\100 - 三层架构\bin\Debug\103 - MODEL实体层.pdb

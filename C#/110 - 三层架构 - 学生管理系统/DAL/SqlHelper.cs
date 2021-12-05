@@ -56,5 +56,25 @@ namespace DAL
             return dataTable;
         }
         #endregion
+
+        #region 执行增加和修改的操作 +static int ExecuteNonQuery(string sql, params SqlParameter[] ps)
+        /// <summary>
+        /// 执行增加和修改的操作
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <param name="ps"></param>
+        /// <returns></returns>
+        public static int ExecuteNonQuery(string sql, params SqlParameter[] ps)
+        {
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                conn.Open();
+                SqlCommand command = new SqlCommand(sql, conn);
+                command.Parameters.AddRange(ps);
+                return command.ExecuteNonQuery();
+            }
+        }
+        #endregion
+
     }
 }
