@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+// 正则表达式
+using System.Text.RegularExpressions;
+
 namespace UI
 {
     public partial class PersonForm : Form
@@ -87,6 +90,12 @@ namespace UI
 
         private void btnOk_Click(object sender, EventArgs e)
         {
+            // 先判断输入内容是否合法
+            if (ValidataUser() == false)
+            {
+                return;
+            }
+
             MODEL.Person newPerson = new MODEL.Person();
 
             /*
@@ -118,5 +127,58 @@ namespace UI
                 MessageBox.Show("添加失败！");
             }
         }
+
+        #region
+        /// <summary>
+        /// 用户信息输入检测
+        /// </summary>
+        /// <returns></returns>
+        bool ValidataUser()
+        {
+            // 如果为空，或者有非法字符
+            if (string.IsNullOrEmpty(this.txtName.Text.Trim()) || Regex.IsMatch(txtName.Text.Trim(), @"\W"))
+            {
+                MessageBox.Show("请输入合法的用户名");
+
+                // 【重点】定位光标
+                txtName.Focus();
+                return false;
+            }
+
+            // 如果为空，或者有非法字符
+            if (string.IsNullOrEmpty(this.txtLoginName.Text.Trim()) || Regex.IsMatch(txtLoginName.Text.Trim(), @"\W"))
+            {
+                MessageBox.Show("请输入合法的登录名");
+
+                // 【重点】定位光标
+                txtLoginName.Focus();
+                return false;
+            }
+
+            // 如果为空，或者有非法字符
+            if (string.IsNullOrEmpty(this.txtPwd.Text.Trim()) || this.txtPwd.Text.Trim() != this.txtPwd2.Text.Trim())
+            {
+                MessageBox.Show("请输入两次一致的密码");
+
+                // 【重点】定位光标
+                txtPwd2.Focus();
+                return false;
+            }
+
+            // 填了邮箱就判断邮箱格式是否正确
+            if (!string.IsNullOrEmpty(this.txtEmail.Text.Trim()))
+            {
+                if (!Regex.IsMatch(txtEmail.Text.Trim(), @"\w+[@]\w+[.]\w+"))
+                {
+                    MessageBox.Show("请输入合法的电子邮箱");
+                    txtEmail.Focus();
+                    return false;
+                }
+            }
+
+            return true;
+        }
+        #endregion
+
     }
 }
