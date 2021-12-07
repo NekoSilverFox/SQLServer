@@ -128,7 +128,7 @@ namespace UI
             }
         }
 
-        #region
+        #region 用户信息输入检测+bool ValidataUser()
         /// <summary>
         /// 用户信息输入检测
         /// </summary>
@@ -177,6 +177,18 @@ namespace UI
             }
 
             return true;
+        }
+        #endregion
+
+        #region 当控件不再是不再是窗体当前下在被操纵的控件中触发 +void txtLoginName_Leave(object sender, EventArgs e)
+        /// <summary>
+        /// 当控件不再是不再是窗体当前下在被操纵的控件中触发
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtLoginName_Leave(object sender, EventArgs e)
+        {
+
         }
         #endregion
 

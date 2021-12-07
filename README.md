@@ -1992,6 +1992,12 @@ private void btnSignIn_Click(object sender, EventArgs e)
 
 ## 控件
 
+### 文本框
+
+属性：Leave当光标不在此文本框中的时候，发生的事件
+
+![image-20211205212019615](README.assets/image-20211205212019615.png)
+
 ### 下拉列表
 
 ![image-20211103184335130](README.assets/image-20211103184335130.png)

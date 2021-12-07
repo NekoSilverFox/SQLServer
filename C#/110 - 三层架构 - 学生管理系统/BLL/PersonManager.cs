@@ -47,6 +47,8 @@ namespace BLL
         /// <returns></returns>
         public int InsertPerson(MODEL.Person newPerson)
         {
+            // 将密码加密
+            newPerson.PPwd = CommonHelper.GetMD5(newPerson.PPwd);
             return personService.InsertPerson(newPerson);
         }
         #endregion

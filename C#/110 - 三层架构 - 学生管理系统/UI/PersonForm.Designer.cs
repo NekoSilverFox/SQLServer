@@ -377,6 +377,7 @@
             this.txtLoginName.Name = "txtLoginName";
             this.txtLoginName.Size = new System.Drawing.Size(100, 21);
             this.txtLoginName.TabIndex = 6;
+            this.txtLoginName.Leave += new System.EventHandler(this.txtLoginName_Leave);
             // 
             // label9
             // 
